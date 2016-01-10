@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  head: MyString
+  tail: MyString
+  memo: MyText
+  check: 1
+  status: 1
+
+two:
+  head: MyString
+  tail: MyString
+  memo: MyText
+  check: 1
+  status: 1

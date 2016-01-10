@@ -1,0 +1,29 @@
+<h1>Create New Card</h1>
+<%= form_for(@card) do |f| %>
+    <% if @card.errors.any? %>
+        <div id="error_explanation">
+            <ul>
+                <% @card.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+    <div class="field">
+        <%= f.label :head %>
+        <%= f.text_field :head %>
+    </div>
+    <div class="field">
+        <%= f.label :tail %>
+        <%= f.text_field :tail %>
+    </div>
+    <div class="field">
+        <%= f.label :memo %>
+        <%= f.text_field :memo %>
+    </div>
+    <div class="field">
+        <%= f.label :status %>
+        <%= f.select :status, [['NG', 0], ['OK', 1]] %>
+    </div>
+    <%= f.submit %>
+<% end %>

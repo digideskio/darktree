@@ -1,0 +1,12 @@
+<div id="cards">
+    <% @cards.each do |card| %>
+        <div class='card'>
+            <div class="head">
+                Q. <%= card.head %>
+            </div>
+            <div class="tail">
+                A. <%= card.tail %>
+            </div>
+        </div>
+    <% end %>
+</div>
