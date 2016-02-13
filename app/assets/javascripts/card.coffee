@@ -4,6 +4,5 @@
 
 $ ->
   $("div.tail").hide()
-
   $("div.card").click ->
     $(@).children("div.tail").toggle(10)

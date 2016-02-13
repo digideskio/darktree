@@ -33,3 +33,13 @@ cards = [
 cards.each do |card|
   Card.create(card)
 end
+
+50.times do |n|
+  Card.create(
+    head: "head-#{n}",
+    tail: "tail-#{n}",
+    memo: "memo-#{n}",
+    check: (1..100).to_a.sample,
+    status: (1..5).to_a.sample
+  )
+end
