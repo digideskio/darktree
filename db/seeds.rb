@@ -40,6 +40,6 @@ end
     tail: "tail-#{n}",
     memo: "memo-#{n}",
     check: (1..100).to_a.sample,
-    status: (1..5).to_a.sample
+    status: (0..2).to_a.sample
   )
 end
