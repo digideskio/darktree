@@ -1,6 +1,6 @@
 <div id="cards">
     <% @cards.each do |card| %>
-        <div class='card'>
+        <div class="card">
             <div class="head">
                 Q. <%= card.head %>
             </div>
@@ -10,5 +10,6 @@
         </div>
     <% end %>
 </div>
-
-<%= paginate @cards %>
+<div id="pagination">
+    <%= paginate @cards %>
+</div>
