@@ -1,4 +1,4 @@
-<h1>Create New Card</h1>
+<h2>Create Card</h2>
 <%= form_for(@card) do |f| %>
     <% if @card.errors.any? %>
         <div id="error_explanation">
@@ -26,4 +26,10 @@
         <%= f.select :status, [['NG', 0], ['OK', 1]] %>
     </div>
     <%= f.submit %>
+<% end %>
+
+<h2>Import from csv</h2>
+<%= form_tag confirm_cards_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag :import %>
 <% end %>

@@ -13,8 +13,17 @@
  *= require_tree .
  *= require_self
  */
+p {
+    margin: 0 !important;
+}
+
 body {
     background: #f8f8f8;
+
+    div#main {
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
 
     nav.navbar {
         margin-bottom: 0;

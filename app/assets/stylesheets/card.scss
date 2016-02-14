@@ -12,12 +12,21 @@ div.container {
     }
 
     div#page-info {
-        padding-top: 15px;
         padding-bottom: 15px;
         text-align: right;
     }
 
     div#pagination {
         text-align: center;
+    }
+
+    div.confirm-message {
+        padding: 0 0 15px 0;
+    }
+
+    table {
+        tr.table-header {
+            background-color: #f8f8f8;
+        }
     }
 }

@@ -1,0 +1,43 @@
+<%= form_tag import_cards_path do %>
+    <div class="confirm-message">
+        <p>以下<%= @new_cards.count %>件のデータを一括登録します。</p>
+        <% if @invalid_rows.present? %>
+            <p>
+                <span class="glyphicon glyphicon-warning-sign"></span>
+                登録できないデータが<%= @invalid_rows.count %>件ありました。
+            </p>
+        <% end %>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <tr class="table-header">
+                <th>head</th>
+                <th>tail</th>
+                <th>memo</th>
+                <th>status</th>
+            </tr>
+            <% @new_cards.each do |nc| %>
+                <tr>
+                    <td>
+                        <%= simple_format(nc.head) %>
+                        <%= hidden_field_tag nil, nc.head, name: 'cards[][head]' %>
+                    </td>
+                    <td>
+                        <%= simple_format(nc.tail) %>
+                        <%= hidden_field_tag nil, nc.tail, name: 'cards[][tail]' %>
+                    </td>
+                    <td>
+                        <%= simple_format(nc.memo) %>
+                        <%= hidden_field_tag nil, nc.memo, name: 'cards[][memo]' %>
+                    </td>
+                    <td>
+                        <%= nc.status %>
+                        <%= hidden_field_tag nil, nc.status, name: 'cards[][status]' %>
+                    </td>
+                </tr>
+            <% end %>
+        </table>
+    </div>
+    <%= submit_tag :import %>
+<% end %>
