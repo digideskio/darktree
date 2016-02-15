@@ -5,10 +5,10 @@
     <% @cards.each do |card| %>
         <div class="card">
             <div class="head">
-                <%= simple_format("Q. #{card.head}") %>
+                <%= simple_format(card.head) %>
             </div>
             <div class="tail">
-                <%= simple_format("A. #{card.tail}") %>
+                <pre><%#= simple_format(card.tail) %><%= card.tail %></pre>
             </div>
         </div>
     <% end %>
