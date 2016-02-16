@@ -17,7 +17,8 @@ div.container {
                 border: 1px solid #cccccc;
                 padding: 10px;
                 font-family: 'Inconsolata';
-                p {
+                overflow: hidden;
+                p,ul {
                     font-size: 80%;
                 }
             }

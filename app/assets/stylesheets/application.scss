@@ -13,8 +13,14 @@
  *= require_tree .
  *= require_self
  */
-p {
+p,ul,pre {
     margin: 0 !important;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
 }
 
 body {
