@@ -8,7 +8,7 @@
                 <%= simple_format(card.head) %>
             </div>
             <div class="tail">
-                <pre><%#= simple_format(card.tail) %><%= card.tail %></pre>
+                <%= md(card.tail) %>
             </div>
         </div>
     <% end %>

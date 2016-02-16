@@ -12,6 +12,15 @@ div.container {
             div.head {
                 margin-bottom: 5px;
             }
+            div.tail {
+                background: #f8f8f8;
+                border: 1px solid #cccccc;
+                padding: 10px;
+                font-family: 'Inconsolata';
+                p {
+                    font-size: 80%;
+                }
+            }
         }
     }
 

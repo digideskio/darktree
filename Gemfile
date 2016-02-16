@@ -9,6 +9,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jquery-turbolinks'
 gem 'kaminari'
+gem 'redcarpet'
 
 group :development, :test do
   gem 'byebug'
