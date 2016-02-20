@@ -21,6 +21,12 @@ div.container {
                 p,ul {
                     font-size: 80%;
                 }
+                thead > tr {
+                    border-bottom: 1px solid #cccccc;
+                }
+                td {
+                    padding: 2px 5px;
+                }
             }
         }
     }
