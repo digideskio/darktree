@@ -9,6 +9,10 @@ div.container {
             border: 1px solid #ccc;
             margin-bottom: 10px;
             background: #fff;
+            div.head, div.tail {
+                overflow: hidden;
+                word-break:break-all
+            }
             div.head {
                 margin-bottom: 5px;
             }
@@ -17,7 +21,6 @@ div.container {
                 border: 1px solid #cccccc;
                 padding: 10px;
                 font-family: 'Inconsolata';
-                overflow: hidden;
                 p,ul {
                     font-size: 80%;
                 }
