@@ -9,7 +9,8 @@
 tag_list = [
   'foo,bar,baz',
   'foo,bar',
-  'foo'
+  'foo',
+  ''
 ]
 
 55.times do |n|
@@ -25,6 +26,6 @@ tag_list = [
   if c.save
     puts "SUCCESS: id => #{c.id}"
   else
-    puts "FAILED: #{c.errors.messages}"
+    p "FAILED: #{c.errors.full_messages}"
   end
 end

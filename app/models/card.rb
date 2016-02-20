@@ -14,7 +14,7 @@ class Card < ActiveRecord::Base
   before_create do
     if tag_list.present?
       tag_list.split(',').each do |tag_name|
-        tags << Tag.where(name: tag_name).first_or_initialize
+        tags << Tag.where(name: tag_name).first_or_initialize if tag_name.present?
       end
     end
   end
