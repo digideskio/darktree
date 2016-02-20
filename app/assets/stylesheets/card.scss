@@ -31,6 +31,17 @@ div.container {
                     padding: 2px 5px;
                 }
             }
+            div.tags {
+                font-size: 70%;
+                li {
+                    padding: 0px 5px;
+                    color: #acacac;
+                    font-weight: bold;
+                    background: #ffffff;
+                    border: 1px solid #acacac;
+                    border-radius: 2px;
+                }
+            }
         }
     }
 

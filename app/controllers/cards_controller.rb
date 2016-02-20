@@ -1,6 +1,6 @@
 class CardsController < ApplicationController
   def index
-    @cards = Card.page(params[:page])
+    @cards = Card.page(params[:page]).includes(:tags)
   end
 
   def new
