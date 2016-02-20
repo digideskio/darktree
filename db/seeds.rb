@@ -6,40 +6,25 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first
 
-cards = [
-  {
-    head: 'ペンを借りてもいい？',
-    tail: 'Can I borrow your pen?',
-    memo: 'キクタン英会話 Day1 Chapter1',
-    check: 0,
-    status: 0
-  },
-  {
-    head: 'トムはパーティに来るの？',
-    tail: 'Is Tom coming to the party?',
-    memo: 'キクタン英会話 Day2 Chapter1',
-    check: 0,
-    status: 0
-  },
-  {
-    head: '新しい仕事が見つかりました！',
-    tail: 'I found a new job!',
-    memo: '',
-    check: 0,
-    status: 1
-  },
+tag_list = [
+  'foo,bar,baz',
+  'foo,bar',
+  'foo'
 ]
 
-cards.each do |card|
-  Card.create(card)
-end
-
-50.times do |n|
-  Card.create(
+55.times do |n|
+  c = Card.new(
     head: "head-#{n}",
     tail: "tail-#{n}",
     memo: "memo-#{n}",
     check: (1..100).to_a.sample,
-    status: (0..2).to_a.sample
+    status: (0..2).to_a.sample,
+    tag_list: tag_list.sample
   )
+
+  if c.save
+    puts "SUCCESS: id => #{c.id}"
+  else
+    puts "FAILED: #{c.errors.messages}"
+  end
 end

@@ -31,18 +31,6 @@
         <%= f.text_field :tag_list %>
     </div>
 
-    <!-- サブ -->
-    <% if false %>
-    <div class="field">
-    <% @card.tags.each do |tag| %>
-        <%= f.fields_for :tags, tag do |t| %>
-            <%= t.label :tag %>
-            <%= t.text_field :name %>
-        <% end %>
-    <% end %>
-    </div>
-    <% end %>
-
     <%= f.submit %>
 <% end %>
 

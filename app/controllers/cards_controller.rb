@@ -9,13 +9,6 @@ class CardsController < ApplicationController
 
   def create
     @card = Card.new(card_params)
-
-    if params[:card][:tag_list].present?
-      params[:card][:tag_list].split(',').each do |tag_name|
-        @card.tags << Tag.where(name: tag_name).first_or_initialize
-      end
-    end
-
     if @card.save
       redirect_to cards_path, notice: 'Card was successfully created.'
     else

@@ -10,4 +10,12 @@ class Card < ActiveRecord::Base
   validates :memo, length: { maximum: 5000 }
   validates :check, numericality: { only_integer: true, grater_than: 0 }
   validates :status, numericality: { only_integer: true} , inclusion: { in: 0..2 }
+
+  before_create do
+    if tag_list.present?
+      tag_list.split(',').each do |tag_name|
+        tags << Tag.where(name: tag_name).first_or_initialize
+      end
+    end
+  end
 end
