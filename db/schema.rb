@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160110051104) do
+ActiveRecord::Schema.define(version: 20160220055440) do
 
   create_table "cards", force: :cascade do |t|
     t.string   "head",                   null: false
@@ -22,5 +22,20 @@ ActiveRecord::Schema.define(version: 20160110051104) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  create_table "taggings", force: :cascade do |t|
+    t.integer  "card_id"
+    t.integer  "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true
 
 end
