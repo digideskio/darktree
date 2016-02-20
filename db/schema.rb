@@ -14,8 +14,8 @@
 ActiveRecord::Schema.define(version: 20160220055440) do
 
   create_table "cards", force: :cascade do |t|
-    t.string   "head",                   null: false
-    t.string   "tail",                   null: false
+    t.text     "head",                   null: false
+    t.text     "tail",                   null: false
     t.text     "memo"
     t.integer  "check",      default: 0
     t.integer  "status",     default: 0
