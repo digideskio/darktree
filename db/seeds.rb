@@ -26,6 +26,6 @@ tag_list = [
   if c.save
     puts "SUCCESS: id => #{c.id}"
   else
-    p "FAILED: #{c.errors.full_messages}"
+    puts "FAILED: #{c.errors.full_messages}"
   end
 end
