@@ -1,0 +1,38 @@
+<div id="card">
+    <% if @card.present? %>
+        <div class="card-item">
+            <div class="left">head</div>
+            <div class="right"><%= @card.head %></div>
+        </div>
+        <div class="card-item">
+            <div class="left">tail</div>
+            <div class="right"><%= @card.tail %></div>
+        </div>
+        <div class="card-item">
+            <div class="left">memo</div>
+            <div class="right"><%= @card.memo %></div>
+        </div>
+        <div class="card-item">
+            <div class="left">status</div>
+            <div class="right"><%= @card.status %></div>
+        </div>
+        <div class="card-item">
+            <div class="left">tags</div>
+            <div class="right">
+                <% @card.tags.each do |tag| %>
+                    <%= tag.name %><br>
+                <% end %>
+            </div>
+        </div>
+        <div class="card-item">
+            <div class="left">created_at</div>
+            <div class="right"><%= @card.created_at %></div>
+        </div>
+        <div class="card-item">
+            <div class="left">updated_at</div>
+            <div class="right"><%= @card.updated_at %></div>
+        </div>
+    <% else %>
+        Not found!
+    <% end %>
+</div>

@@ -2,44 +2,59 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 div.container {
+    // cards#index
     div#cards {
         font-size: 1.2em;
         div.card {
-            padding: 20px;
-            border: 1px solid #ccc;
+            border: 1px solid #cccccc;
             margin-bottom: 10px;
             background: #fff;
-            div.head, div.tail {
-                overflow: hidden;
-                word-break:break-all
-            }
-            div.head {
-                margin-bottom: 5px;
-            }
-            div.tail {
-                background: #f8f8f8;
-                border: 1px solid #cccccc;
-                padding: 10px;
-                font-family: 'Inconsolata';
-                p,ul {
-                    font-size: 80%;
+
+            div.card-body {
+                padding: 15px;
+                div.head, div.tail {
+                    overflow: hidden;
+                    word-break:break-all
                 }
-                thead > tr {
-                    border-bottom: 1px solid #cccccc;
+                div.head {
+                    margin-bottom: 5px;
                 }
-                td {
-                    padding: 2px 5px;
+                div.tail {
+                    background: #f8f8f8;
+                    border: 1px solid #cccccc;
+                    padding: 10px;
+                    font-family: 'Inconsolata';
+                    p,ul {
+                        font-size: 80%;
+                    }
+                    thead > tr {
+                        border-bottom: 1px solid #cccccc;
+                    }
+                    td {
+                        padding: 2px 5px;
+                    }
+                }
+                div.tags {
+                    font-size: 70%;
+                    li {
+                        padding: 0px 5px;
+                        color: #acacac;
+                        font-weight: bold;
+                        background: #ffffff;
+                        border: 1px solid #acacac;
+                        border-radius: 2px;
+                    }
                 }
             }
-            div.tags {
+            div.card-footer {
                 font-size: 70%;
-                li {
-                    padding: 0px 5px;
-                    color: #acacac;
-                    font-weight: bold;
-                    background: #ffffff;
-                    border: 1px solid #acacac;
-                    border-radius: 2px;
+                padding: 5px 15px;
+                border-top: 1px solid #cccccc;
+                ul {
+                    text-align: right;
+                    li {
+                        padding: 0;
+                    }
                 }
             }
         }
@@ -61,6 +76,27 @@ div.container {
     table {
         tr.table-header {
             background-color: #f8f8f8;
+        }
+    }
+
+    // cards#show
+    div#card {
+        div.card-item {
+            display: flex;
+            padding: 15px 0;
+            border-bottom: 1px solid #cccccc;
+            &:first-child {
+                border-top: 1px solid #cccccc;
+            }
+            div.left {
+                width: 30%;
+                font-weight: bold;
+            }
+            div.right {
+                width: 70%;
+                overflow: hidden;
+                word-break:break-all
+            }
         }
     }
 }
