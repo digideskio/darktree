@@ -17,7 +17,6 @@ ActiveRecord::Schema.define(version: 20160220055440) do
     t.text     "head",                   null: false
     t.text     "tail",                   null: false
     t.text     "memo"
-    t.integer  "check",      default: 0
     t.integer  "status",     default: 0
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false

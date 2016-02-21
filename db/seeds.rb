@@ -19,7 +19,6 @@ tag_list = [
     head: "head-#{n}: " + 'H' * [5, 10, 30, 50, 100, 300].to_a.sample,
     tail: "tail-#{n}: " + 'T' * [5, 10, 30, 50, 100, 300].to_a.sample,
     memo: "memo-#{n}",
-    check: (1..100).to_a.sample,
     status: (0..2).to_a.sample,
     tag_list: tag_list.sample
   )
