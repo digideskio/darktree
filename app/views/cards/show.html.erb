@@ -1,6 +1,10 @@
 <div id="card">
     <% if @card.present? %>
         <div class="card-item">
+            <div class="left">id</div>
+            <div class="right"><%= @card.id %></div>
+        </div>
+        <div class="card-item">
             <div class="left">head</div>
             <div class="right"><%= @card.head %></div>
         </div>
