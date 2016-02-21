@@ -7,6 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first
 
 tag_list = [
+  'foo,bar,baz,abcdefghijklmnopqrstuvwxyz',
   'foo,bar,baz',
   'foo,bar',
   'foo',

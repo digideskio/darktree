@@ -9,9 +9,11 @@ class Card < ActiveRecord::Base
   validates :tail, presence: true, length: { maximum: 5000 }
   validates :memo, length: { maximum: 5000 }
   validates :check, numericality: { only_integer: true, grater_than: 0 }
-  validates :status, numericality: { only_integer: true} , inclusion: { in: 0..2 }
+  validates :status, numericality: { only_integer: true } , inclusion: { in: 0..2 }
 
   before_create do
+    # カンマ区切りで渡されるタグを登録
+    # 存在しないタグの場合は新規作成
     if tag_list.present?
       tag_list.split(',').each do |tag_name|
         tags << Tag.where(name: tag_name).first_or_initialize if tag_name.present?
