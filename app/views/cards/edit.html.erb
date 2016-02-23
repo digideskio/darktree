@@ -1,0 +1,35 @@
+<h2>Edit Card</h2>
+<%= form_for(@card) do |f| %>
+    <% if @card.errors.any? %>
+        <div id="error_explanation">
+            <ul>
+                <% @card.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+    <div class="field">
+        <%= f.label :head %>
+        <%= f.text_area :head %>
+    </div>
+    <div class="field">
+        <%= f.label :tail %>
+        <%= f.text_area :tail %>
+    </div>
+    <div class="field">
+        <%= f.label :memo %>
+        <%= f.text_field :memo %>
+    </div>
+    <div class="field">
+        <%= f.label :status %>
+        <%= f.select :status, [['NG', 0], ['OK', 1]] %>
+    </div>
+
+    <div class="field">
+        <%= f.label :tag_list %>
+        <%= f.text_field :tag_list, value: @card.tags.pluck(:name).join(',') %>
+    </div>
+
+    <%= f.submit %>
+<% end %>

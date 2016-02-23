@@ -1,6 +1,11 @@
 class CardsController < ApplicationController
+  before_action :set_card, only: [:show, :edit, :update, :destroy]
+
   def index
     @cards = Card.page(params[:page]).includes(:tags)
+  end
+
+  def show
   end
 
   def new
@@ -14,6 +19,22 @@ class CardsController < ApplicationController
     else
       render action: 'new'
     end
+  end
+
+  def edit
+  end
+
+  def update
+    if @card.update(card_params)
+      redirect_to @card, notice: 'Card was successfully updated.'
+    else
+      format.html { render :edit }
+    end
+  end
+
+  def destroy
+    @card.destroy
+    redirect_to cards_path
   end
 
   def confirm
@@ -45,23 +66,11 @@ class CardsController < ApplicationController
     redirect_to cards_path, notice: 'Cards were successfully created.'
   end
 
-  def show
-    @card = Card.find_by(id: params[:id])
-  end
-
-  def edit
-  end
-
-  def update
-  end
-
-  def destroy
-    @card = Card.find_by(id: params[:id])
-    @card.destroy
-    redirect_to cards_path
-  end
-
   private
+
+  def set_card
+    @card = Card.find_by(id: params[:id])
+  end
 
   def card_params
     params.require(:card).permit(:head, :tail, :memo, :check, :status, :tag_list)

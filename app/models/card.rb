@@ -19,4 +19,13 @@ class Card < ActiveRecord::Base
       end
     end
   end
+
+  before_update do
+    taggings.each(&:destroy)
+    if tag_list.present?
+      tag_list.split(',').each do |tag_name|
+        tags << Tag.where(name: tag_name).first_or_initialize if tag_name.present?
+      end
+    end
+  end
 end
