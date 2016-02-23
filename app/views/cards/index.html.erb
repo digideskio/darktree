@@ -5,15 +5,13 @@
     <% @cards.each do |card| %>
         <div class="card">
             <div class="card-body">
-                <% if card.tags.exists? %>
-                    <div class="tags">
-                        <ul class="list-inline">
-                            <% card.tags.each do |tag| %>
-                                <li><%= tag.name.truncate(13) %></li>
-                            <% end %>
-                        </ul>
-                    </div>
-                <% end %>
+                <div class="tags">
+                    <ul class="list-inline">
+                        <% card.tags.each do |tag| %>
+                            <li><%= tag.name.truncate(13) %></li>
+                        <% end %>
+                    </ul>
+                </div>
                 <div class="head">
                     <%= simple_format(card.head) %>
                 </div>
