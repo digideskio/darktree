@@ -15,7 +15,7 @@ class CardsController < ApplicationController
   def create
     @card = Card.new(card_params)
     if @card.save
-      redirect_to cards_path, notice: 'Card was successfully created.'
+      redirect_to cards_path, notice: { success: 'Card was successfully created.' }
     else
       render action: 'new'
     end
@@ -26,7 +26,7 @@ class CardsController < ApplicationController
 
   def update
     if @card.update(card_params)
-      redirect_to @card, notice: 'Card was successfully updated.'
+      redirect_to @card, notice: { success: 'Card was successfully updated.' }
     else
       format.html { render :edit }
     end
@@ -34,7 +34,7 @@ class CardsController < ApplicationController
 
   def destroy
     @card.destroy
-    redirect_to cards_path
+    redirect_to cards_path, notice: { success: 'Card was successfully deleted.' }
   end
 
   def confirm
@@ -50,7 +50,7 @@ class CardsController < ApplicationController
       end
     end
 
-    format.html { render action: 'new', notice: 'No valid cards' } if @new_cards.empty?
+    format.html { render action: 'new', notice: { error: 'No valid cards' } } if @new_cards.empty?
   end
 
   def import
@@ -63,7 +63,7 @@ class CardsController < ApplicationController
       cards.each(&:save!)
     end
 
-    redirect_to cards_path, notice: 'Cards were successfully created.'
+    redirect_to cards_path, notice: { success: 'Cards were successfully created.' }
   end
 
   private
