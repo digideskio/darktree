@@ -18,4 +18,10 @@ group :development, :test do
   gem 'pry-rails'
   gem 'rack-mini-profiler'
   gem 'bullet'
+  gem 'rubocop'
+  gem 'guard'
+  gem 'guard-rubocop'
+  gem 'guard-minitest'
+  gem 'simplecov', require: false
+  gem 'test-unit'
 end
