@@ -4,7 +4,7 @@ module ApplicationHelper
       @markdown = Redcarpet::Markdown.new(
         Redcarpet::Render::HTML.new(
           filter_html: true,
-          hard_wrap: true,
+          hard_wrap: true
         ),
         tables: true,
         fenced_code_blocks: true

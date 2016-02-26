@@ -8,7 +8,7 @@ class Card < ActiveRecord::Base
   validates :head, presence: true, length: { maximum: 5000 }
   validates :tail, presence: true, length: { maximum: 5000 }
   validates :memo, length: { maximum: 5000 }
-  validates :status, numericality: { only_integer: true } , inclusion: { in: 0..2 }
+  validates :status, numericality: { only_integer: true }, inclusion: { in: 0..2 }
 
   before_create do
     # カンマ区切りで渡されるタグを登録
