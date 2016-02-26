@@ -104,4 +104,45 @@ div.container {
             text-align: right;
         }
     }
+
+    // cards#new
+    div.tab-content {
+        padding-top: 10px;
+        div#create-card {
+            div.field {
+                margin-bottom: 10px;
+                input[type="text"],textarea {
+                    width: 100%;
+                    padding: 5px 6px;
+                    border: 1px solid #cccccc;
+                    font-family: 'Inconsolata';
+                    border-radius: 2px;
+                }
+                textarea.head {
+                    min-height: 80px;
+                }
+                textarea.tail {
+                    min-height: 150px;
+                }
+                textarea.memo {
+                    min-height: 100px;
+                }
+                select {
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    appearance: none;
+                    background: #ffffff;
+                    width: 100%;
+                    padding: 5px 6px;
+                    border-radius: 2px;
+                    border: 1px solid #cccccc;
+                    font-size: 80%;
+                }
+                label {
+                    display: block;
+                }
+            }
+        }
+    }
+
 }
