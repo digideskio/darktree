@@ -1,3 +1,18 @@
+AllCops:
+  Include:
+    - '**/Rakefile'
+    - '**/config.ru'
+  Exclude:
+    - 'db/**/*'
+    - 'bin/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'test/**/*'
+    - 'vendor/**/*'
+
+Rails:
+  Enabled: true
+
 Style/Documentation:
  Enabled: false
 
@@ -9,6 +24,3 @@ Metrics/LineLength:
 
 Metrics/MethodLength:
   Max: 15
-
-#CyclomaticComplexity:
-#  Max: 10
