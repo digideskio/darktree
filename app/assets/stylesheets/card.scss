@@ -101,11 +101,16 @@ div.container {
         }
         div.actions {
             padding: 10px 0;
-            text-align: right;
         }
     }
 
     // cards#new
+    nav {
+        li.active a {
+            background-color: #fbfbfb;
+            font-weight: bold;
+        }
+    }
     div.tab-content {
         padding-top: 10px;
         div#create-card {
@@ -144,5 +149,4 @@ div.container {
             }
         }
     }
-
 }
