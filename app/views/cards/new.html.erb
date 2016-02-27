@@ -14,8 +14,11 @@
     </div>
     <div id="import-card" class="tab-pane fade">
         <%= form_tag confirm_cards_path, multipart: true do %>
-            <%= file_field_tag :file %>
-            <%= submit_tag :import %>
+            <div class="field">
+                <%= label_tag :file, 'CSV File' %>
+                <%= file_field_tag :file %>
+            </div>
+            <%= submit_tag :import, class: 'btn btn-primary' %>
         <% end %>
     </div>
 </div>

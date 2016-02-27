@@ -63,7 +63,7 @@ class CardsController < ApplicationController
       cards.each(&:save!)
     end
 
-    redirect_to cards_path, notice: { success: 'Cards were successfully created.' }
+    redirect_to cards_path, notice: { success: 'Cards were successfully imported.' }
   end
 
   private
