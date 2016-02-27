@@ -1,0 +1,33 @@
+<%= form_for(@card) do |f| %>
+    <% if @card.errors.any? %>
+        <div id="error_explanation">
+            <ul>
+                <% @card.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+    <div class="field">
+        <%= f.label :tag_list, 'Tag'%>
+        <%= f.text_field :tag_list, placeholder: 'tag1,tag2,tag3', value: @card.tags.pluck(:name).join(',') %>
+    </div>
+    <div class="field">
+        <%= f.label :head %>
+        <%= f.text_area :head, class: 'head', placeholder: 'What is the most highest mountain in the world?' %>
+    </div>
+    <div class="field">
+        <%= f.label :tail %>
+        <%= f.text_area :tail, class: 'tail', placeholder: "Mount Everest\n (!) you can use Markdown syntax!" %>
+    </div>
+    <div class="field">
+        <%= f.label :memo %>
+        <%= f.text_area :memo, class: 'memo', placeholder: 'source: Wikipedia' %>
+    </div>
+    <div class="field">
+        <%= f.label :status %>
+        <%= f.select :status, { 'NG' => 0, 'OK' => 1 } %>
+    </div>
+
+    <%= f.submit 'Submit', class: 'btn btn-primary' %>
+<% end %>

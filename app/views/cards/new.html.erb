@@ -1,55 +1,21 @@
-<div>
-    <nav>
-        <ul class="nav nav-tabs">
-            <li role="presentation" class="active">
-                <a href="#create-card" data-toggle="tab">Create</a>
-            </li>
-            <li role="presentation">
-                <a href="#import-card" data-toggle="tab">Import</a>
-            </li>
-        </ul>
-    </nav>
-    <div class="tab-content">
-        <div id="create-card" class="tab-pane fade in active">
-            <%= form_for(@card) do |f| %>
-                <% if @card.errors.any? %>
-                    <div id="error_explanation">
-                        <ul>
-                            <% @card.errors.full_messages.each do |msg| %>
-                                <li><%= msg %></li>
-                            <% end %>
-                        </ul>
-                    </div>
-                <% end %>
-                <div class="field">
-                    <%= f.label :tag_list, 'Tag'%>
-                    <%= f.text_field :tag_list, placeholder: 'tag1,tag2,tag3' %>
-                </div>
-                <div class="field">
-                    <%= f.label :head %>
-                    <%= f.text_area :head, class: 'head', placeholder: 'What is the most highest mountain in the world?' %>
-                </div>
-                <div class="field">
-                    <%= f.label :tail %>
-                    <%= f.text_area :tail, class: 'tail', placeholder: "Mount Everest\n (!) you can use Markdown syntax!" %>
-                </div>
-                <div class="field">
-                    <%= f.label :memo %>
-                    <%= f.text_area :memo, class: 'memo', placeholder: 'source: Wikipedia' %>
-                </div>
-                <div class="field">
-                    <%= f.label :status %>
-                    <%= f.select :status, { 'NG' => 0, 'OK' => 1 } %>
-                </div>
-
-                <%= f.submit 'Submit', class: 'btn btn-primary' %>
-            <% end %>
-        </div>
-        <div id="import-card" class="tab-pane fade">
-            <%= form_tag confirm_cards_path, multipart: true do %>
-                <%= file_field_tag :file %>
-                <%= submit_tag :import %>
-            <% end %>
-        </div>
+<nav>
+    <ul class="nav nav-tabs">
+        <li role="presentation" class="active">
+            <a href="#create-card" data-toggle="tab">Create</a>
+        </li>
+        <li role="presentation">
+            <a href="#import-card" data-toggle="tab">Import</a>
+        </li>
+    </ul>
+</nav>
+<div class="tab-content">
+    <div id="create-card" class="tab-pane fade in active">
+        <%= render 'form' %>
+    </div>
+    <div id="import-card" class="tab-pane fade">
+        <%= form_tag confirm_cards_path, multipart: true do %>
+            <%= file_field_tag :file %>
+            <%= submit_tag :import %>
+        <% end %>
     </div>
 </div>
