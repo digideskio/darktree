@@ -33,6 +33,11 @@ div.container {
                     td {
                         padding: 2px 5px;
                     }
+                    img {
+                        display: block;
+                        max-width: 100%;
+                        height: auto;
+                    }
                 }
                 div.tags {
                     font-size: 70%;

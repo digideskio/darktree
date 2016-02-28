@@ -17,23 +17,32 @@ p,ul {
     margin: 0 !important;
 }
 
-img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-}
-
 body {
+    // header
+    header {
+        background: #fff;
+        div.container {
+            padding-top: 3px;
+            padding-bottom: 3px;
+            li a {
+                font-weight: bold;
+                color: #000;
+            }
+            a.navbar-brand {
+                padding: 0 15px;
+                img {
+                    max-height: 50px;
+                    max-width: 150px;
+                }
+            }
+            span.icon-bar {
+                background-color: #000;
+            }
+        }
+    }
     background: #fbfbfb;
     div#main {
         margin-top: 15px;
         margin-bottom: 15px;
-    }
-    nav.navbar {
-        margin-bottom: 0;
-        a.navbar-brand {
-            font-size: 1.6em;
-            color: #fff;
-        }
     }
 }
