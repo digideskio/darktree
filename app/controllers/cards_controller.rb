@@ -2,7 +2,8 @@ class CardsController < ApplicationController
   before_action :set_card, only: [:show, :edit, :update, :destroy]
 
   def index
-    @cards = Card.page(params[:page]).includes(:tags)
+    @cards = Card.status_is(params[:status]).tag_in(params[:tags])
+                 .by_query(params[:query]).page(params[:page]).includes(:tags)
   end
 
   def show

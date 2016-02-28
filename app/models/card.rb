@@ -10,6 +10,20 @@ class Card < ActiveRecord::Base
   validates :memo, length: { maximum: 5000 }
   validates :status, numericality: { only_integer: true }, inclusion: { in: 0..2 }
 
+  scope :by_query, lambda { |query|
+    if query.present?
+      where('head LIKE ? or tail LIKE ?', "%#{query}%", "%#{query}%")
+    end
+  }
+
+  scope :status_is, lambda { |status|
+    where(status: status) if status.present?
+  }
+
+  scope :tag_in, lambda { |tags|
+    joins(:tags).where(tags: { name: Array(tags) }) if tags.present?
+  }
+
   before_create do
     # カンマ区切りで渡されるタグを登録
     # 存在しないタグの場合は新規作成
