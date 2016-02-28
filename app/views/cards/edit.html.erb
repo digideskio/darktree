@@ -2,10 +2,4 @@
     <div id="create-card" class="tab-pane fade in active">
         <%= render 'form' %>
     </div>
-    <div id="import-card" class="tab-pane fade">
-        <%= form_tag confirm_cards_path, multipart: true do %>
-            <%= file_field_tag :file %>
-            <%= submit_tag :import %>
-        <% end %>
-    </div>
 </div>
