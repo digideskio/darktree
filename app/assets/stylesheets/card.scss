@@ -107,13 +107,13 @@ div.container {
     // cards#new
     nav {
         li.active a {
-            background-color: #fbfbfb;
+            background-color: #fbfbfb !important;
             font-weight: bold;
         }
     }
     div.tab-content {
         padding-top: 10px;
-        div#create-card, div#import-card {
+        div#card-form, div#card-import-form {
             div.field {
                 margin-bottom: 10px;
                 input[type="text"],textarea {

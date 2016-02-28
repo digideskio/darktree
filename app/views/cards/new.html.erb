@@ -1,18 +1,18 @@
 <nav>
     <ul class="nav nav-tabs">
         <li role="presentation" class="active">
-            <a href="#create-card" data-toggle="tab">Create</a>
+            <a href="#card-form" data-toggle="tab">Create</a>
         </li>
         <li role="presentation">
-            <a href="#import-card" data-toggle="tab">Import</a>
+            <a href="#card-import-form" data-toggle="tab">Import</a>
         </li>
     </ul>
 </nav>
 <div class="tab-content">
-    <div id="create-card" class="tab-pane fade in active">
+    <div id="card-form" class="tab-pane fade in active">
         <%= render 'form' %>
     </div>
-    <div id="import-card" class="tab-pane fade">
+    <div id="card-import-form" class="tab-pane fade">
         <%= form_tag confirm_cards_path, multipart: true do %>
             <div class="field">
                 <%= label_tag :file, 'CSV File' %>
