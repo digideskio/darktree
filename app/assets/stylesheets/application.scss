@@ -18,6 +18,7 @@ p,ul {
 }
 
 body {
+    background: #fbfbfb;
     // header
     header {
         background: #fff;
@@ -39,10 +40,5 @@ body {
                 background-color: #000;
             }
         }
-    }
-    background: #fbfbfb;
-    div#main {
-        margin-top: 15px;
-        margin-bottom: 15px;
     }
 }
