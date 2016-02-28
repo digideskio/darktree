@@ -1,5 +1,5 @@
 class CardsController < ApplicationController
-  before_action :set_card, only: [:show, :edit, :update, :destroy]
+  before_action :set_card, only: [:show, :edit, :update, :destroy, :fav]
 
   def index
     @cards = Card.status_is(params[:status]).tag_in(params[:tags])
@@ -67,6 +67,16 @@ class CardsController < ApplicationController
     redirect_to cards_path, notice: { success: 'Cards were successfully imported.' }
   end
 
+  def fav
+    render json: { msg: 'Not found' }, status: 400 and return if @card.nil?
+
+    if @card.update(favorite: params[:fav])
+      render json: @card
+    else
+      render json: @card.errors, status: 400
+    end
+  end
+
   private
 
   def set_card
@@ -74,7 +84,7 @@ class CardsController < ApplicationController
   end
 
   def card_params
-    params.require(:card).permit(:head, :tail, :memo, :check, :status, :tag_list)
+    params.require(:card).permit(:head, :tail, :memo, :check, :status, :favorite, :tag_list)
   end
 
   def cards_params
