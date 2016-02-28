@@ -14,12 +14,13 @@
 ActiveRecord::Schema.define(version: 20160220055440) do
 
   create_table "cards", force: :cascade do |t|
-    t.text     "head",                   null: false
-    t.text     "tail",                   null: false
+    t.text     "head",                       null: false
+    t.text     "tail",                       null: false
     t.text     "memo"
     t.integer  "status",     default: 0
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.boolean  "favorite",   default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "taggings", force: :cascade do |t|
