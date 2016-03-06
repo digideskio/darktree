@@ -18,6 +18,10 @@
                     <%= label_tag 'status', 'Status' %>
                     <%= select_tag 'status', options_from_collection_for_select(Card::STATUSES, :first, :last, params[:status]), include_blank: 'All', class: 'form-control' %>
                 </div>
+                <div class="field">
+                    <%= label_tag 'sort', 'Sort' %>
+                    <%= select_tag 'sort', options_from_collection_for_select(Card::SORT_OPTIONS, :first, :last, params[:sort]), include_blank: true, class: 'form-control' %>
+                </div>
             </div>
             <div id="filter-footer">
                 <%= submit_tag 'Filter', class: 'btn btn-primary' %>
