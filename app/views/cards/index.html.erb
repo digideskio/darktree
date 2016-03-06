@@ -12,11 +12,11 @@
             <div id="filter-body">
                 <div class="field">
                     <%= label_tag 'tag', 'Tag' %>
-                    <%= select_tag 'tag', options_from_collection_for_select(@tags, :name, :name, params[:tag]), class: 'form-control' %>
+                    <%= select_tag 'tag', options_from_collection_for_select(@tags, :name, :name, params[:tag]), include_blank: 'All', class: 'form-control' %>
                 </div>
                 <div class="field">
                     <%= label_tag 'status', 'Status' %>
-                    <%= select_tag 'status', options_from_collection_for_select(Card::STATUSES, :first, :last, params[:status]), class: 'form-control' %>
+                    <%= select_tag 'status', options_from_collection_for_select(Card::STATUSES, :first, :last, params[:status]), include_blank: 'All', class: 'form-control' %>
                 </div>
             </div>
             <div id="filter-footer">
