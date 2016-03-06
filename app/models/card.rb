@@ -1,4 +1,10 @@
 class Card < ActiveRecord::Base
+  STATUSES = {
+    0 => 'Good',
+    1 => 'Almost',
+    2 => 'Bad'
+  }
+
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
 

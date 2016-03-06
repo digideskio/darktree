@@ -3,8 +3,34 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 div.container {
     // cards#index
+    div#filter-and-sort {
+        padding: 0;
+        margin-bottom: 15px;
+        text-align: right;
+        div.dropdown-menu {
+            min-width: 70%;
+        }
+        div#filter-body {
+            padding:15px;
+            div.field {
+                margin-bottom:15px;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+                .label {
+                    display: block;
+                }
+            }
+        }
+        div#filter-footer {
+            padding: 10px 15px;
+            text-align: right;
+            border-top: 1px solid #e5e5e5;
+        }
+    }
     div#cards {
         font-size: 1.2em;
+
         div.card {
             border: 1px solid #cccccc;
             margin-bottom: 10px;
