@@ -26,7 +26,7 @@
     </div>
     <div class="field">
         <%= f.label :status %>
-        <%= f.select :status, { 'NG' => 0, 'OK' => 1 } %>
+        <%= f.select :status, options_from_collection_for_select(Card::STATUSES, :first, :last) %>
     </div>
 
     <%= f.submit 'Submit', class: 'btn btn-primary' %>
