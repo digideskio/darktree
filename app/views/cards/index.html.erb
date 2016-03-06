@@ -8,45 +8,21 @@
         Filter &amp; Sort <span class="caret"></span>
     </a>
     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="d-label1">
-        <form action="" method="get">
+        <%= form_tag '', method: 'get' do %>
             <div id="filter-body">
-                <!--
                 <div class="field">
-                    <label for="group">Group</label>
-                    <select id="group" class="form-control" name="group">
-                        <option value="val">val</option>
-                    </select>
-                </div>
-                -->
-                <div class="field">
-                    <label for="tag">Tag</label>
-                    <select id="tag" class="form-control" name="tags">
-                        <option value=""></option>
-                        <% @tags.each do |tag| %>
-                            <option value="<%= tag.name %>"><%= tag.name %></option>
-                        <% end %>
-                    </select>
+                    <%= label_tag 'tag', 'Tag' %>
+                    <%= select_tag 'tag', options_from_collection_for_select(@tags, :name, :name), class: 'form-control' %>
                 </div>
                 <div class="field">
-                    <label for="status">Status</label>
-                    <select id="status" class="form-control" name="status">
-                        <option value=""></option>
-                        <% Card::STATUSES.each do |id, status| %>
-                            <option value="<%= id %>"><%= status %></option>
-                        <% end %>
-                    </select>
+                    <%= label_tag 'status', 'Status' %>
+                    <%= select_tag 'status', options_from_collection_for_select(Card::STATUSES, :first, :last), class: 'form-control' %>
                 </div>
-                <!--
-                <div class="field">
-                    <label for="status">Sort</label>
-                    <select id="status" class="form-control" name="status"><option value="val1"></option></select>
-                </div>
-                -->
             </div>
             <div id="filter-footer">
-                <input type="submit" value="Filter" class="btn btn-primary">
+                <%= submit_tag 'Filter', class: 'btn btn-primary' %>
             </div>
-        </form>
+        <% end %>
     </div>
 </div>
 
