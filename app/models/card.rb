@@ -16,15 +16,15 @@ class Card < ActiveRecord::Base
   accepts_nested_attributes_for :tags
   attr_accessor :tag_list
 
-  validates :head, presence: true, length: { maximum: 5000 }
-  validates :tail, presence: true, length: { maximum: 5000 }
+  validates :front, presence: true, length: { maximum: 5000 }
+  validates :back, presence: true, length: { maximum: 5000 }
   validates :memo, length: { maximum: 5000 }
   validates :status, numericality: { only_integer: true }, inclusion: { in: 0..2 }
   validates :favorite, inclusion: { in: [true, false] }
 
   scope :by_query, lambda { |query|
     if query.present?
-      where('head LIKE ? or tail LIKE ?', "%#{query}%", "%#{query}%")
+      where('front LIKE ? or back LIKE ?', "%#{query}%", "%#{query}%")
     end
   }
 

@@ -13,12 +13,12 @@
         <%= f.text_field :tag_list, placeholder: 'tag1,tag2,tag3', value: @card.tags.pluck(:name).join(',') %>
     </div>
     <div class="field">
-        <%= f.label :head %>
-        <%= f.text_area :head, class: 'head', placeholder: 'What is the most highest mountain in the world?' %>
+        <%= f.label :front %>
+        <%= f.text_area :front, class: 'front', placeholder: 'What is the most highest mountain in the world?' %>
     </div>
     <div class="field">
-        <%= f.label :tail %>
-        <%= f.text_area :tail, class: 'tail', placeholder: "Mount Everest\n (!) you can use Markdown syntax!" %>
+        <%= f.label :back %>
+        <%= f.text_area :back, class: 'back', placeholder: "Mount Everest\n (!) you can use Markdown syntax!" %>
     </div>
     <div class="field">
         <%= f.label :memo %>

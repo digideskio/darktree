@@ -38,14 +38,14 @@ div.container {
 
             div.card-body {
                 padding: 15px;
-                div.head, div.tail {
+                div.front, div.back {
                     overflow: hidden;
                     word-break:break-all
                 }
-                div.head {
+                div.front {
                     margin-bottom: 5px;
                 }
-                div.tail {
+                div.back {
                     background: #f8f8f8;
                     border: 1px solid #cccccc;
                     padding: 10px;
@@ -155,10 +155,10 @@ div.container {
                     font-family: 'Inconsolata';
                     border-radius: 2px;
                 }
-                textarea.head {
+                textarea.front {
                     min-height: 80px;
                 }
-                textarea.tail {
+                textarea.back {
                     min-height: 150px;
                 }
                 textarea.memo {

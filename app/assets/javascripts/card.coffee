@@ -3,6 +3,6 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-  $("div.tail").hide()
+  $("div.back").hide()
   $("div.card-body").click ->
-    $(@).children("div.tail").toggle(10)
+    $(@).children("div.back").toggle(10)

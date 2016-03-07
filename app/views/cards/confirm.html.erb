@@ -12,20 +12,20 @@
     <div class="table-responsive">
         <table class="table table-bordered">
             <tr class="table-header">
-                <th>head</th>
-                <th>tail</th>
+                <th>front</th>
+                <th>back</th>
                 <th>memo</th>
                 <th>status</th>
             </tr>
             <% @new_cards.each do |nc| %>
                 <tr>
                     <td>
-                        <%= simple_format(nc.head) %>
-                        <%= hidden_field_tag nil, nc.head, name: 'cards[][head]' %>
+                        <%= simple_format(nc.front) %>
+                        <%= hidden_field_tag nil, nc.front, name: 'cards[][front]' %>
                     </td>
                     <td>
-                        <%= simple_format(nc.tail) %>
-                        <%= hidden_field_tag nil, nc.tail, name: 'cards[][tail]' %>
+                        <%= simple_format(nc.back) %>
+                        <%= hidden_field_tag nil, nc.back, name: 'cards[][back]' %>
                     </td>
                     <td>
                         <%= simple_format(nc.memo) %>

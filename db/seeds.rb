@@ -16,8 +16,8 @@ tag_list = [
 
 55.times do |n|
   c = Card.new(
-    head: "head-#{n}: " + 'H' * [5, 10, 30, 50, 100, 300].to_a.sample,
-    tail: "tail-#{n}: " + 'T' * [5, 10, 30, 50, 100, 300].to_a.sample,
+    front: "front-#{n}: " + 'H' * [5, 10, 30, 50, 100, 300].to_a.sample,
+    back: "back-#{n}: " + 'T' * [5, 10, 30, 50, 100, 300].to_a.sample,
     memo: "memo-#{n}",
     status: (0..2).to_a.sample,
     tag_list: tag_list.sample

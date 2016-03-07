@@ -1,8 +1,8 @@
 class CreateCards < ActiveRecord::Migration
   def change
     create_table :cards do |t|
-      t.text :head, null: false
-      t.text :tail, null: false
+      t.text :front, null: false
+      t.text :back, null: false
       t.text :memo
       t.integer :status, default: 0
       t.boolean :favorite, default: false
