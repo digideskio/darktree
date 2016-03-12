@@ -87,6 +87,10 @@ div.container {
                     li {
                         padding: 0;
                         margin-left: 10px;
+                        span.favorited {
+                            font-weight: bold;
+                            color: #FDCF04;
+                        }
                     }
                 }
             }

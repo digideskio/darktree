@@ -6,3 +6,23 @@ $ ->
   $("div.back").hide()
   $("div.card-body").click ->
     $(@).children("div.back").toggle(10)
+
+$ ->
+  $("li.fav").click ->
+     card_span = $(this).children("span")
+     card_id = $(this).parents("div.card").attr("data-card")
+     if $(this).children("span").hasClass("favorited")
+       method = 'DELETE'
+     else
+       method = 'PUT'
+
+     $.ajax
+       url: "/cards/" + card_id + "/favorite",
+       type: method,
+       contentType: "application/json",
+       dataType: "json",
+       success: (msg) ->
+         if method == "PUT"
+           $(card_span).addClass("favorited")
+         else
+           $(card_span).removeClass("favorited")

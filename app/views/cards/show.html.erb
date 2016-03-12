@@ -22,6 +22,10 @@
             <div class="right"><%= Card::STATUSES[@card.status] %></div>
         </div>
         <div class="card-item">
+            <div class="left">favorite</div>
+            <div class="right"><%= @card.favorite %></div>
+        </div>
+        <div class="card-item">
             <div class="left">tags</div>
             <div class="right">
                 <% @card.tags.each do |tag| %>
