@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   root 'cards#index'
   resources :cards do
     member do
-      put 'fav'
+      put 'favorite' => 'cards#favorite'
+      delete 'favorite' => 'cards#unfavorite'
     end
     collection do
       post 'import'

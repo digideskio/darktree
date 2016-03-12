@@ -1,9 +1,10 @@
 class CardsController < ApplicationController
-  before_action :set_card, only: [:show, :edit, :update, :destroy, :fav]
+  before_action :set_card, only: [:show, :edit, :update, :destroy, :favorite, :unfavorite]
 
   def index
     @cards = Card.status_is(params[:status]).tag_in(params[:tags])
-                 .by_query(params[:query]).sort_by(params[:sort]).page(params[:page]).includes(:tags)
+                 .by_query(params[:query]).sort_by(params[:sort])
+                 .page(params[:page]).includes(:tags)
     @tags = Tag.select(:name)
   end
 
@@ -68,10 +69,20 @@ class CardsController < ApplicationController
     redirect_to cards_path, notice: { success: 'Cards were successfully imported.' }
   end
 
-  def fav
-    render json: { msg: 'Not found' }, status: 400 and return if @card.nil?
+  # PUT cards/:id/favorite.json
+  def favorite
+    render json: { msg: 'Not found' }, status: 400 && return if @card.nil?
+    if @card.update(favorite: true)
+      render json: @card
+    else
+      render json: @card.errors, status: 400
+    end
+  end
 
-    if @card.update(favorite: params[:fav])
+  # DELETE cards/:id/favorite.json
+  def unfavorite
+    render json: { msg: 'Not found' }, status: 400 && return if @card.nil?
+    if @card.update(favorite: false)
       render json: @card
     else
       render json: @card.errors, status: 400

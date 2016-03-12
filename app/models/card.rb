@@ -3,12 +3,12 @@ class Card < ActiveRecord::Base
     0 => 'Bad',
     1 => 'Almost',
     2 => 'Good'
-  }
+  }.freeze
 
   SORT_OPTIONS = {
     'updated_at-asc' => 'Last modified: Old to New',
-    'updated_at-desc' => 'Last modified: New to Old',
-  }
+    'updated_at-desc' => 'Last modified: New to Old'
+  }.freeze
 
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
@@ -37,8 +37,8 @@ class Card < ActiveRecord::Base
   }
 
   scope :sort_by, lambda { |sort_opt|
-    return unless SORT_OPTIONS.has_key?(sort_opt)
-    column, order = sort_opt.split("-")
+    return unless SORT_OPTIONS.key?(sort_opt)
+    column, order = sort_opt.split('-')
     order(column => order.to_sym, id: :asc)
   }
 
