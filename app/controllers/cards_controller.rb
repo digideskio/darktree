@@ -4,7 +4,7 @@ class CardsController < ApplicationController
   def index
     @cards = Card.status_is(params[:status]).tag_in(params[:tags])
                  .by_query(params[:query]).sort_by(params[:sort])
-                 .page(params[:page]).includes(:tags)
+                 .by_fav(params[:fav]).page(params[:page]).includes(:tags)
     @tags = Tag.select(:name)
   end
 

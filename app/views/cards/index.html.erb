@@ -19,6 +19,10 @@
                     <%= select_tag 'status', options_from_collection_for_select(Card::STATUSES, :first, :last, params[:status]), include_blank: 'All', class: 'form-control' %>
                 </div>
                 <div class="field">
+                    <%= label_tag 'favorite', 'Favorite' %>
+                    <%= select_tag 'fav', options_for_select({ All: 'all', On: 1, Off: 0 }, selected: params[:fav]), class: 'form-control' %>
+                </div>
+                <div class="field">
                     <%= label_tag 'sort', 'Sort' %>
                     <%= select_tag 'sort', options_from_collection_for_select(Card::SORT_OPTIONS, :first, :last, params[:sort]), include_blank: true, class: 'form-control' %>
                 </div>

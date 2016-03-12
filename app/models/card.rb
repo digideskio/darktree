@@ -42,6 +42,14 @@ class Card < ActiveRecord::Base
     order(column => order.to_sym, id: :asc)
   }
 
+  scope :by_fav, lambda { |fav|
+    if fav == '1'
+      where(favorite: true)
+    elsif fav == '0'
+      where(favorite: false)
+    end
+  }
+
   before_create do
     # カンマ区切りで渡されるタグを登録
     # 存在しないタグの場合は新規作成
