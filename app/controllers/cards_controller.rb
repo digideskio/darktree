@@ -28,16 +28,35 @@ class CardsController < ApplicationController
   end
 
   def update
+    redirect_to cards_path and return if @card.nil?
     if @card.update(card_params)
       redirect_to @card, notice: { success: 'Card was successfully updated.' }
     else
-      format.html { render :edit }
+      render :edit
     end
   end
 
   def destroy
     @card.destroy
     redirect_to cards_path, notice: { success: 'Card was successfully deleted.' }
+  end
+
+  def favorite
+    render json: { msg: 'Not found' }, status: 400 && return if @card.nil?
+    if @card.update(favorite: true)
+      render json: @card
+    else
+      render json: @card.errors, status: 400
+    end
+  end
+
+  def unfavorite
+    render json: { msg: 'Not found' }, status: 400 && return if @card.nil?
+    if @card.update(favorite: false)
+      render json: @card
+    else
+      render json: @card.errors, status: 400
+    end
   end
 
   def confirm
@@ -67,26 +86,6 @@ class CardsController < ApplicationController
     end
 
     redirect_to cards_path, notice: { success: 'Cards were successfully imported.' }
-  end
-
-  # PUT cards/:id/favorite.json
-  def favorite
-    render json: { msg: 'Not found' }, status: 400 && return if @card.nil?
-    if @card.update(favorite: true)
-      render json: @card
-    else
-      render json: @card.errors, status: 400
-    end
-  end
-
-  # DELETE cards/:id/favorite.json
-  def unfavorite
-    render json: { msg: 'Not found' }, status: 400 && return if @card.nil?
-    if @card.update(favorite: false)
-      render json: @card
-    else
-      render json: @card.errors, status: 400
-    end
   end
 
   private
