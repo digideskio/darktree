@@ -53,15 +53,17 @@
                 </div>
             </div>
             <div class="card-footer">
-                <ul class="list-inline">
-                    <li>
+                <ul>
+                    <li title>
                         <span class="glyphicon glyphicon-flag"></span>
                     </li>
                     <li class="fav" style="cursor:pointer;">
                         <span class="glyphicon glyphicon-star <%= "favorited" if card.favorite %>"></span>
                     </li>
                     <li>
-                        <%= link_to "detail", card_path(card.id) %>
+                        <%= link_to card_path(card.id) do %>
+                            <span class="glyphicon glyphicon-info-sign"></span>
+                        <% end %>
                     </li>
                 </ul>
             </div>

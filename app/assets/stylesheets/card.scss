@@ -80,13 +80,15 @@ div.container {
             }
             div.card-footer {
                 font-size: 80%;
-                padding: 7px 15px;
+                padding: 10px 0px;
                 border-top: 1px solid #cccccc;
                 ul {
-                    text-align: right;
+                    padding: 0;
+                    list-style-type: none;
+                    display: flex;
                     li {
-                        padding: 0;
-                        margin-left: 10px;
+                        width: 100%;
+                        text-align: center;
                         span.favorited {
                             font-weight: bold;
                             color: #FDCF04;
