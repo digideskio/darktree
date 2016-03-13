@@ -82,13 +82,47 @@ div.container {
                 font-size: 80%;
                 padding: 10px 0px;
                 border-top: 1px solid #cccccc;
-                ul {
+                > ul {
                     padding: 0;
                     list-style-type: none;
                     display: flex;
-                    li {
+                    > li {
                         width: 100%;
                         text-align: center;
+                        span {
+                            color: #aab8c2;
+                        }
+                    }
+                    li.status {
+                        > div {
+                            cursor: pointer;
+                            display: inline;
+                        }
+                        ul {
+                            li {
+                                padding: 2px 0 2px 5px;
+                                font-size: 90%;
+                                cursor: pointer;
+                                &:hover {
+                                    background: #404040;
+                                    color: #fff;
+                                }
+                            }
+                        }
+                    }
+                    span.status-good {
+                        color: #39B54A;
+                    }
+                    span.status-almost {
+                        color: #337ab7;
+                    }
+                    span.status-bad {
+                        color: #cc0000;
+                    }
+                    li.fav {
+                        span {
+                            cursor: pointer;
+                        }
                         span.favorited {
                             font-weight: bold;
                             color: #FDCF04;

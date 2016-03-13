@@ -2,7 +2,6 @@
 <div id="page-info">
     <%= page_entries_info @cards %>
 </div>
-
 <div id="filter-and-sort" class="dropdown">
     <a href="#" id="d-label1" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Filter &amp; Sort <span class="caret"></span>
@@ -33,7 +32,6 @@
         <% end %>
     </div>
 </div>
-
 <div id="cards">
     <% @cards.each do |card| %>
         <div class="card" data-card="<%= card.id %>">
@@ -54,10 +52,22 @@
             </div>
             <div class="card-footer">
                 <ul>
-                    <li title>
-                        <span class="glyphicon glyphicon-flag"></span>
+                    <li class="status dropdown">
+                        <div class="dropdown-toggle" id="status-label" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="glyphicon glyphicon-flag status-<%= Card::STATUSES[card.status].downcase %>"></span> <span class="caret"></span>
+                        </div>
+                        <ul class="dropdown-menu" aria-labelledby="status-label">
+                            <% Card::STATUSES.each do |id, status| %>
+                                <li>
+                                    <%= status %>
+                                    <% if id == card.status %>
+                                        <span class="glyphicon glyphicon-ok"></span>
+                                    <% end %>
+                                </li>
+                            <% end %>
+                        </ul>
                     </li>
-                    <li class="fav" style="cursor:pointer;">
+                    <li class="fav">
                         <span class="glyphicon glyphicon-star <%= "favorited" if card.favorite %>"></span>
                     </li>
                     <li>
