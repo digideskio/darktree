@@ -35,7 +35,7 @@
 <div id="cards">
     <% @cards.each do |card| %>
         <div class="card" data-card="<%= card.id %>">
-            <div class="card-body">
+            <div class="front face">
                 <div class="tags">
                     <ul class="list-inline">
                         <% card.tags.each do |tag| %>
@@ -43,43 +43,34 @@
                         <% end %>
                     </ul>
                 </div>
-                <div class="front">
+                <div class="content">
                     <%= simple_format(card.front) %>
                 </div>
-                <div class="back">
+            </div>
+            <div class="back face">
+                <div class="content">
                     <%= md(card.back) %>
                 </div>
-            </div>
-            <div class="card-footer">
-                <ul>
-                    <li class="status dropdown">
-                        <div class="dropdown-toggle" id="status-label" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="glyphicon glyphicon-flag status-<%= Card::STATUSES[card.status].downcase %>"></span> <span class="caret"></span>
-                        </div>
-                        <ul class="dropdown-menu" aria-labelledby="status-label">
-                            <% Card::STATUSES.each do |id, status| %>
-                                <li>
-                                    <%= status %>
-                                    <% if id == card.status %>
-                                        <span class="glyphicon glyphicon-ok"></span>
-                                    <% end %>
-                                </li>
+                <div class="card-footer">
+                    <ul>
+                        <li class="check-count">
+                            10
+                        </li>
+                        <li class="fav">
+                            <span class="glyphicon glyphicon-star <%= "favorited" if card.favorite %>"></span>
+                        </li>
+                        <li>
+                            <%= link_to card_path(card.id) do %>
+                                <span class="glyphicon glyphicon-info-sign"></span>
                             <% end %>
-                        </ul>
-                    </li>
-                    <li class="fav">
-                        <span class="glyphicon glyphicon-star <%= "favorited" if card.favorite %>"></span>
-                    </li>
-                    <li>
-                        <%= link_to card_path(card.id) do %>
-                            <span class="glyphicon glyphicon-info-sign"></span>
-                        <% end %>
-                    </li>
-                </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     <% end %>
 </div>
+
 <div id="pagination">
     <%= paginate @cards, window: 5 %>
 </div>

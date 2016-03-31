@@ -3,9 +3,8 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-  $("div.back").hide()
-  $("div.card-body").click ->
-    $(@).children("div.back").toggle(10)
+  $('div.card div.content').click (e) ->
+      $(@).closest('.card').toggleClass('flipped')
 
 $ ->
   $("li.fav").click ->
