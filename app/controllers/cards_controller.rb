@@ -59,7 +59,6 @@ class CardsController < ApplicationController
     end
   end
 
-  # PUT /cards/:id/status
   def status
     render json: { msg: 'Not found' }, status: 400 && return if @card.nil?
     if @card.update(status: params[:status])

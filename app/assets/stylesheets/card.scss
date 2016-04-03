@@ -31,34 +31,22 @@ div.container {
 
     div#cards {
         font-size: 1.2em;
-
         div.card {
             border: 1px solid #ccc;
             margin-bottom: 10px;
             perspective: 800;
-            -moz-perspective: 800;
-            -webkit-perspective: 800;
             transform-style: preserve-3d;
-            -moz-transform-style: preserve-3d;
-            -webkit-transform-style: preserve-3d;
-			transition: 0.3s;
-            -moz-transition: 0.3s;
-            -webkit-transition: 0.3s;
-
+            transition: 0.3s;
             div.face {
                 backface-visibility: hidden;
-                -moz-backface-visibility: hidden;
-                -webkit-backface-visibility: hidden;
             }
-
             div.front, div.back {
                 overflow: hidden;
                 word-break:break-all;
-                padding: 15px;
             }
-
             div.front {
                 display: block;
+                padding: 15px;
                 background: #fff;
                 position: relative;
                 div.tags {
@@ -85,19 +73,17 @@ div.container {
                     span.bad { color: #db4545; }
                 }
             }
-
             div.back {
                 background: #eee;
                 font-family: 'Inconsolata';
+                padding: 15px 15px 5px 15px;
                 transform: rotateY(180deg);
-                -moz-transform: rotateY(180deg);
-                -webkit-transform: rotateY(180deg);
                 display:none;
                 div.content {
-                    margin-bottom: 10px;
+                    margin-bottom: 15px;
                 }
                 div.card-info {
-                    padding-top: 10px;
+                    padding-top: 5px;
                     font-size: 80%;
                     border-top: 1px solid #cccccc;
                     ul {
@@ -124,16 +110,11 @@ div.container {
                 }
             }
         }
-
         div.card.flipped {
             transform: rotatey(180deg);
-            -moz-transform: rotatey(180deg);
-            -webkit-transform: rotatey(180deg);
-
             .front {
                 display: none;
             }
-
             .back {
                 display: block;
             }
@@ -212,8 +193,6 @@ div.container {
                     min-height: 100px;
                 }
                 select {
-                    -webkit-appearance: none;
-                    -moz-appearance: none;
                     appearance: none;
                     background: #ffffff;
                     width: 100%;
