@@ -95,15 +95,15 @@ div.container {
                         li {
                             width: 100%;
                             text-align: center;
-                            span {
+                            i {
                                 color: #aab8c2;
                             }
                         }
                         li.fav {
-                            span {
+                            i {
                                 cursor: pointer;
                             }
-                            span.favorited {
+                            i.favorited {
                                 font-weight: bold;
                                 color: #FDCF04;
                             }

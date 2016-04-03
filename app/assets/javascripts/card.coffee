@@ -3,14 +3,17 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-  $('div.card div.content').click (e) ->
+  $('div.card div.content').click ->
       $(@).closest('.card').toggleClass('flipped')
 
 $ ->
+  $('[data-toggle="tooltip"]').tooltip()
+
+$ ->
   $("li.fav").click ->
-     card_span = $(this).children("span")
+     card_i = $(this).children("i")
      card_id = $(this).parents("div.card").attr("data-card")
-     if $(this).children("span").hasClass("favorited")
+     if $(this).children("i").hasClass("favorited")
        method = 'DELETE'
      else
        method = 'PUT'
@@ -22,6 +25,6 @@ $ ->
        dataType: "json",
        success: (msg) ->
          if method == "PUT"
-           $(card_span).addClass("favorited")
+           $(card_i).addClass("favorited")
          else
-           $(card_span).removeClass("favorited")
+           $(card_i).removeClass("favorited")
