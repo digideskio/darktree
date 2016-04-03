@@ -109,12 +109,12 @@ class CardsController < ApplicationController
   end
 
   def card_params
-    params.require(:card).permit(:front, :back, :memo, :check, :status, :favorite, :tag_list)
+    params.require(:card).permit(:front, :back, :memo, :check, :status, :favorite, :check_count, :tag_list)
   end
 
   def cards_params
     params.require(:cards).map do |c|
-      c.permit([:front, :back, :memo, :check, :stauts])
+      c.permit([:front, :back, :memo, :check, :favorite, :check_count, :stauts])
     end
   end
 end
