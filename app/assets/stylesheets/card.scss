@@ -60,6 +60,7 @@ div.container {
             div.front {
                 display: block;
                 background: #fff;
+                position: relative;
                 div.tags {
                     font-size: 70%;
                     li {
@@ -71,6 +72,17 @@ div.container {
                         border: 1px solid #acacac;
                         border-radius: 2px;
                     }
+                }
+                div.status {
+                    font-size: 70%;
+                    text-align: right;
+                    color: #a2a2a2;
+                    span {
+                        font-weight: bold;
+                    }
+                    span.status-good { color: #39aa56; }
+                    span.status-almost { color: #ffac14; }
+                    span.status-bad { color: #db4545; }
                 }
             }
 
