@@ -1,5 +1,5 @@
 class CardsController < ApplicationController
-  before_action :set_card, only: [:show, :edit, :update, :destroy, :favorite, :unfavorite]
+  before_action :set_card, only: [:show, :edit, :update, :destroy, :favorite, :unfavorite, :status]
 
   def index
     @cards = Card.status_is(params[:status]).tag_in(params[:tags])
@@ -53,6 +53,16 @@ class CardsController < ApplicationController
   def unfavorite
     render json: { msg: 'Not found' }, status: 400 && return if @card.nil?
     if @card.update(favorite: false)
+      render json: @card
+    else
+      render json: @card.errors, status: 400
+    end
+  end
+
+  # PUT /cards/:id/status
+  def status
+    render json: { msg: 'Not found' }, status: 400 && return if @card.nil?
+    if @card.update(status: params[:status])
       render json: @card
     else
       render json: @card.errors, status: 400

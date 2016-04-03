@@ -47,7 +47,7 @@
                     <%= simple_format(card.front) %>
                 </div>
                 <div class="status">
-                    status: <span class="status-<%= Card::STATUSES[card.status].downcase %>"><%= Card::STATUSES[card.status] %></span>
+                    status: <span class="<%= Card::STATUSES[card.status].downcase %>"><%= Card::STATUSES[card.status].downcase %></span>
                 </div>
             </div>
             <div class="back face">

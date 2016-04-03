@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     member do
       put 'favorite' => 'cards#favorite'
       delete 'favorite' => 'cards#unfavorite'
+      put 'status' => 'cards#status'
     end
     collection do
       post 'import'
