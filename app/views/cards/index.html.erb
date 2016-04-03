@@ -53,13 +53,13 @@
                 </div>
                 <div class="card-info">
                     <ul>
-                        <li class="check-count" data-toggle="tooltip" title="Check count">
+                        <li class="check-count" title="Check count">
                             <i class="fa fa-check"></i> 10
                         </li>
-                        <li class="fav" data-toggle="tooltip" title="Favorite">
-                            <i class="fa fa-star" <%= "favorited" if card.favorite %>"></i>
+                        <li class="fav" title="Favorit">
+                            <i class="fa fa-star" <%= "favorited" if card.favorite %>></i>
                         </li>
-                        <li data-toggle="tooltip" title="Card detail">
+                        <li title="Card detail">
                             <%= link_to card_path(card.id) do %>
                                 <i class="fa fa-info"></i>
                             <% end %>

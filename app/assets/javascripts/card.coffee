@@ -7,9 +7,6 @@ $ ->
       $(@).closest('.card').toggleClass('flipped')
 
 $ ->
-  $('[data-toggle="tooltip"]').tooltip()
-
-$ ->
   $("li.fav").click ->
      card_i = $(this).children("i")
      card_id = $(this).parents("div.card").attr("data-card")
