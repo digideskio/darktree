@@ -18,7 +18,7 @@ $ ->
        method = 'PUT'
 
      $.ajax
-       url: '/cards/' + card_id + '/favorite',
+       url: "/cards/#{card_id}/favorite",
        type: method,
        contentType: 'application/json',
        dataType: 'json',
@@ -47,7 +47,7 @@ $ ->
 
     $.ajax
       url: "/cards/#{card_id}/status",
-      type: "PUT",
+      type: 'PUT',
       contentType: 'application/json',
       dataType: 'json',
       data: JSON.stringify({ "status": next_stauts_id }),
