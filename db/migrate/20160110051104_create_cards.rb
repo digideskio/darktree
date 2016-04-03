@@ -5,6 +5,7 @@ class CreateCards < ActiveRecord::Migration
       t.text :back, null: false
       t.text :memo
       t.integer :status, default: 0
+      t.integer :check_count, default: 0
       t.boolean :favorite, default: false
       t.timestamps null: false
     end

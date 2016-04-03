@@ -29,10 +29,15 @@ class CardsController < ApplicationController
 
   def update
     redirect_to cards_path and return if @card.nil?
-    if @card.update(card_params)
-      redirect_to @card, notice: { success: 'Card was successfully updated.' }
-    else
-      render :edit
+
+    respond_to do |format|
+      if @card.update(card_params)
+        format.html { redirect_to @card, notice: { success: 'Card was successfully updated.' } }
+        format.json { render json: @card }
+      else
+        format.html { render :edit }
+        format.json { render json: @card.errors, status: :unprocessable_entity }
+      end
     end
   end
 

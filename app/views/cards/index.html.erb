@@ -34,7 +34,7 @@
 </div>
 <div id="cards">
     <% @cards.each do |card| %>
-        <div class="card" data-card="<%= card.id %>">
+        <div class="card" data-card="<%= card.id %>" data-check-count="<%= card.check_count %>">
             <div class="front face">
                 <div class="tags">
                     <ul class="list-inline">
@@ -57,7 +57,7 @@
                 <div class="card-info">
                     <ul>
                         <li class="check-count" title="Check count">
-                            <i class="fa fa-check"></i> 10
+                            <i class="fa fa-check"></i> <span><%= card.check_count %></span>
                         </li>
                         <li class="fav" title="Favorit">
                             <i class="fa fa-star" <%= "favorited" if card.favorite %>></i>

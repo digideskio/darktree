@@ -21,6 +21,7 @@ tag_list = [
     memo: "memo-#{n}",
     status: (0..2).to_a.sample,
     favorite: [0,1].sample,
+    check_count: (0..100).to_a.sample,
     tag_list: tag_list.sample
   )
 

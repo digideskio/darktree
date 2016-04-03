@@ -20,6 +20,7 @@ class Card < ActiveRecord::Base
   validates :back, presence: true, length: { maximum: 5000 }
   validates :memo, length: { maximum: 5000 }
   validates :status, numericality: { only_integer: true }, inclusion: { in: 0..2 }
+  validates :check_count, numericality: { only_integer: true }
   validates :favorite, inclusion: { in: [true, false] }
 
   scope :by_query, lambda { |query|

@@ -2,10 +2,25 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-# Flip card
+# Flip card & Increment check_count
 $ ->
   $('div.card div.content').click ->
-      $(@).closest('.card').toggleClass('flipped')
+      card = $(@).closest('div.card')
+      card.toggleClass('flipped')
+
+      # Increment check_count
+      return unless card.hasClass('flipped')
+      card_id = card.attr('data-card')
+      check_count_span = card.find('li.check-count').children('span')
+      check_count = parseInt(check_count_span.text())
+      $.ajax
+        url: "/cards/#{card_id}",
+        type: 'PUT',
+        contentType: 'application/json',
+        dataType: 'json',
+        data: JSON.stringify({ "check_count": check_count + 1 }),
+        success: (msg) ->
+          check_count_span.text(check_count + 1)
 
 # Change fav
 $ ->
@@ -28,7 +43,7 @@ $ ->
          else
            $(card_i).removeClass('favorited')
 
-# Cahnge status
+# Change status
 $ ->
   $('div.status').click ->
     status = $(@).children('span')
