@@ -33,78 +33,66 @@ div.container {
         font-size: 1.2em;
 
         div.card {
-            border: 1px solid #cccccc;
+            border: 1px solid #ccc;
             margin-bottom: 10px;
-            background: #fff;
-            padding: 15px;
-			perspective: 800;
+            perspective: 800;
             -moz-perspective: 800;
             -webkit-perspective: 800;
-			transform-style: preserve-3d;
+            transform-style: preserve-3d;
             -moz-transform-style: preserve-3d;
             -webkit-transform-style: preserve-3d;
 			transition: 0.3s;
             -moz-transition: 0.3s;
             -webkit-transition: 0.3s;
 
+            div.face {
+                backface-visibility: hidden;
+                -moz-backface-visibility: hidden;
+                -webkit-backface-visibility: hidden;
+            }
+
             div.front, div.back {
                 overflow: hidden;
-                word-break:break-all
+                word-break:break-all;
+                padding: 15px;
             }
 
             div.front {
-                margin-bottom: 5px;
                 display: block;
-            }
-
-            div.tags {
-                font-size: 70%;
-                margin-bottom: 5px;
-                li {
-                    padding: 0px 5px;
-                    color: #acacac;
-                    font-weight: bold;
-                    background: #ffffff;
-                    border: 1px solid #acacac;
-                    border-radius: 2px;
+                background: #fff;
+                div.tags {
+                    font-size: 70%;
+                    li {
+                        padding: 0px 5px;
+                        margin-bottom: 5px;
+                        color: #acacac;
+                        font-weight: bold;
+                        background: #ffffff;
+                        border: 1px solid #acacac;
+                        border-radius: 2px;
+                    }
                 }
             }
 
             div.back {
-                background: #f8f8f8;
-                border: 1px solid #cccccc;
-                padding: 10px;
+                background: #eee;
                 font-family: 'Inconsolata';
                 transform: rotateY(180deg);
                 -moz-transform: rotateY(180deg);
                 -webkit-transform: rotateY(180deg);
                 display:none;
-                p,ul {
-                    font-size: 80%;
-                }
-                thead > tr {
-                    border-bottom: 1px solid #cccccc;
-                }
-                td {
-                    padding: 2px 5px;
-                }
-                img {
-                    display: block;
-                    max-width: 100%;
-                    height: auto;
-                }
                 div.content {
                     margin-bottom: 10px;
                 }
-                div.card-footer {
+                div.card-info {
                     padding-top: 10px;
                     font-size: 80%;
                     border-top: 1px solid #cccccc;
-                    > ul {
+                    ul {
                         padding: 0;
                         list-style-type: none;
                         display: flex;
-                        > li {
+                        li {
                             width: 100%;
                             text-align: center;
                             span {
@@ -123,27 +111,20 @@ div.container {
                     }
                 }
             }
-
         }
 
-        .card.flipped {
+        div.card.flipped {
             transform: rotatey(180deg);
             -moz-transform: rotatey(180deg);
             -webkit-transform: rotatey(180deg);
-        }
 
-        .card .face {
-            backface-visibility: hidden;
-            -moz-backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
-        }
+            .front {
+                display: none;
+            }
 
-        .card.flipped .front {
-            display: none;
-        }
-
-        .card.flipped .back {
-            display: block;
+            .back {
+                display: block;
+            }
         }
     }
 

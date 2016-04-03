@@ -18,9 +18,11 @@ p,ul {
 }
 
 body {
-    background: #fbfbfb;
+    background: #fafafa;
+
     // header
     header {
+        border-bottom: 1px solid #e5e5e5 !important;
         background: #fff;
         div.container {
             padding-top: 3px;
