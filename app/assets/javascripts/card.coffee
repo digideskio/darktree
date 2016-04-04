@@ -45,8 +45,8 @@ $ ->
 
 # Change status
 $ ->
-  $('div.status').click ->
-    status = $(@).children('span')
+  $('div.status').children('span').click ->
+    status = $(@)
     card_id = $(@).parents('div.card').attr('data-card')
 
     switch status.attr('class')
@@ -66,6 +66,6 @@ $ ->
       contentType: 'application/json',
       dataType: 'json',
       data: JSON.stringify({ "status": next_stauts_id }),
-      success: (msg) ->
+      success: ->
         status.attr('class', next_status)
         status.text(next_status)
