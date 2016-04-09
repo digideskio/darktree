@@ -19,7 +19,7 @@ $ ->
         contentType: 'application/json',
         dataType: 'json',
         data: JSON.stringify({ "check_count": check_count + 1 }),
-        success: (msg) ->
+        success: ->
           check_count_span.text(check_count + 1)
 
 # Change fav
@@ -37,7 +37,7 @@ $ ->
        type: method,
        contentType: 'application/json',
        dataType: 'json',
-       success: (msg) ->
+       success: ->
          if method == 'PATCH'
            $(card_i).addClass('favorited')
          else
