@@ -2,8 +2,5 @@
 
 ![DarkTree](https://raw.githubusercontent.com/mogulla3/darktree/master/darktree.png)
 
+## Deploy to Heroku
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/mogulla3/darktree)
-
-```
-$ heroku run rake db:migrate --app APP_NAME
-```

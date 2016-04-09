@@ -3,5 +3,8 @@
   "description": "Flash card application that you make yourself",
   "repository": "https://github.com/mogulla3/darktree",
   "logo": "https://raw.githubusercontent.com/mogulla3/darktree/master/darktree.png",
-  "keywords": ["rails", "flash_card"]
+  "keywords": ["rails", "flash_card"],
+  "scripts": {
+    "postdeploy": "bundle exec rake db:migrate"
+  }
 }
