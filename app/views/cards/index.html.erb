@@ -60,7 +60,7 @@
                             <i class="fa fa-check"></i> <span><%= card.check_count %></span>
                         </li>
                         <li class="fav" title="Favorit">
-                            <i class="fa fa-star" <%= "favorited" if card.favorite %>></i>
+                            <i class="fa fa-star <%= 'favorited' if card.favorite %>"></i>
                         </li>
                         <li title="Card detail">
                             <%= link_to card_path(card.id) do %>

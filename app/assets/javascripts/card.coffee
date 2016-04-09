@@ -28,17 +28,18 @@ $ ->
      card_i = $(@).children('i')
      card_id = $(@).parents('div.card').attr('data-card')
      if $(@).children('i').hasClass('favorited')
-       method = 'DELETE'
+       is_fav = false
      else
-       method = 'PATCH'
+       is_fav = true
 
      $.ajax
-       url: "/cards/#{card_id}/favorite",
-       type: method,
+       url: "/cards/#{card_id}",
+       type: 'PATCH',
        contentType: 'application/json',
        dataType: 'json',
+       data: JSON.stringify({ "favorite": is_fav }),
        success: ->
-         if method == 'PATCH'
+         if is_fav
            $(card_i).addClass('favorited')
          else
            $(card_i).removeClass('favorited')

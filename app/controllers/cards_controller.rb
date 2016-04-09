@@ -46,24 +46,6 @@ class CardsController < ApplicationController
     redirect_to cards_path, notice: { success: 'Card was successfully deleted.' }
   end
 
-  def favorite
-    render json: { msg: 'Not found' }, status: 400 && return if @card.nil?
-    if @card.update(favorite: true)
-      render json: @card
-    else
-      render json: @card.errors, status: 400
-    end
-  end
-
-  def unfavorite
-    render json: { msg: 'Not found' }, status: 400 && return if @card.nil?
-    if @card.update(favorite: false)
-      render json: @card
-    else
-      render json: @card.errors, status: 400
-    end
-  end
-
   def confirm
     @new_cards = []
     @invalid_rows = []
