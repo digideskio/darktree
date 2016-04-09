@@ -64,15 +64,6 @@ class CardsController < ApplicationController
     end
   end
 
-  def status
-    render json: { msg: 'Not found' }, status: 400 && return if @card.nil?
-    if @card.update(status: params[:status])
-      render json: @card
-    else
-      render json: @card.errors, status: 400
-    end
-  end
-
   def confirm
     @new_cards = []
     @invalid_rows = []

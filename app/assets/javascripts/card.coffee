@@ -61,7 +61,7 @@ $ ->
         next_stauts_id = 0
 
     $.ajax
-      url: "/cards/#{card_id}/status",
+      url: "/cards/#{card_id}",
       type: 'PUT',
       contentType: 'application/json',
       dataType: 'json',
