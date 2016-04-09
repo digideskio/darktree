@@ -15,7 +15,7 @@ $ ->
       check_count = parseInt(check_count_span.text())
       $.ajax
         url: "/cards/#{card_id}",
-        type: 'PUT',
+        type: 'PATCH',
         contentType: 'application/json',
         dataType: 'json',
         data: JSON.stringify({ "check_count": check_count + 1 }),
@@ -30,7 +30,7 @@ $ ->
      if $(@).children('i').hasClass('favorited')
        method = 'DELETE'
      else
-       method = 'PUT'
+       method = 'PATCH'
 
      $.ajax
        url: "/cards/#{card_id}/favorite",
@@ -38,7 +38,7 @@ $ ->
        contentType: 'application/json',
        dataType: 'json',
        success: (msg) ->
-         if method == 'PUT'
+         if method == 'PATCH'
            $(card_i).addClass('favorited')
          else
            $(card_i).removeClass('favorited')
@@ -62,7 +62,7 @@ $ ->
 
     $.ajax
       url: "/cards/#{card_id}",
-      type: 'PUT',
+      type: 'PATCH',
       contentType: 'application/json',
       dataType: 'json',
       data: JSON.stringify({ "status": next_stauts_id }),
