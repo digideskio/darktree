@@ -48,16 +48,11 @@ class CardsController < ApplicationController
 
   def confirm
     @new_cards = []
-    @invalid_rows = []
 
     if params[:file].present?
       CSV.foreach(params[:file].path, headers: true) do |row|
         card = Card.new(row.to_hash)
-        if card.valid?
-          @new_cards << card
-        else
-          @invalid_rows << card
-        end
+        @new_cards << card if card.valid?
       end
     end
 
@@ -89,7 +84,7 @@ class CardsController < ApplicationController
 
   def cards_params
     params.require(:cards).map do |c|
-      c.permit([:front, :back, :memo, :check, :favorite, :check_count, :stauts])
+      c.permit([:front, :back, :memo, :check, :favorite, :check_count, :status, :tag_list])
     end
   end
 end

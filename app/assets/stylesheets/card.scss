@@ -220,4 +220,14 @@ div.container {
             }
         }
     }
+    // cards#confirm
+    div#import-cards {
+        tr.table-header {
+            background: #eee;
+        }
+
+        tr {
+            background: #fff;
+        }
+    }
 }
