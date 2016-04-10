@@ -50,16 +50,18 @@ class CardsController < ApplicationController
     @new_cards = []
     @invalid_rows = []
 
-    CSV.foreach(params[:file].path, headers: true) do |row|
-      card = Card.new(row.to_hash)
-      if card.valid?
-        @new_cards << card
-      else
-        @invalid_rows << card
+    if params[:file].present?
+      CSV.foreach(params[:file].path, headers: true) do |row|
+        card = Card.new(row.to_hash)
+        if card.valid?
+          @new_cards << card
+        else
+          @invalid_rows << card
+        end
       end
     end
 
-    format.html { render action: 'new', notice: { error: 'No valid cards' } } if @new_cards.empty?
+    redirect_to new_card_path if @new_cards.blank?
   end
 
   def import
