@@ -51,21 +51,23 @@ class Card < ActiveRecord::Base
     end
   }
 
-  before_create do
+  before_save do
     # カンマ区切りで渡されるタグを登録
-    # 存在しないタグの場合は新規作成
+    # Tagが既に存在する & Taggingに存在しない -> Taggingのみ新規登録
+    # Tagが存在しない場合 -> Tag新規作成, Tagging新規登録
     if tag_list.present?
+      taggings.each(&:destroy)
       tag_list.split(',').each do |tag_name|
-        tags << Tag.where(name: tag_name).first_or_initialize if tag_name.present?
-      end
-    end
-  end
+        next unless tag_name.present?
 
-  before_update do
-    taggings.each(&:destroy)
-    if tag_list.present?
-      tag_list.split(',').each do |tag_name|
-        tags << Tag.where(name: tag_name).first_or_initialize if tag_name.present?
+        if Tag.exists?(name: tag_name)
+          tag = Tag.find_by(name: tag_name)
+          unless Tagging.exists?(card_id: id, tag_id: tag.id)
+            tags << tag
+          end
+        else
+          tags << Tag.new(name: tag_name)
+        end
       end
     end
   end
