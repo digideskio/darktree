@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20160220055440) do
     t.text     "front",                       null: false
     t.text     "back",                        null: false
     t.text     "memo"
-    t.integer  "status",      default: 0
+    t.boolean  "status",      default: false
     t.integer  "check_count", default: 0
     t.boolean  "favorite",    default: false
     t.datetime "created_at",                  null: false

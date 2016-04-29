@@ -15,7 +15,7 @@
                 </div>
                 <div class="field">
                     <%= label_tag 'status', 'Status' %>
-                    <%= select_tag 'status', options_from_collection_for_select(Card::STATUSES, :first, :last, params[:status]), include_blank: 'All', class: 'form-control' %>
+                    <%= select_tag 'status', options_for_select({ All: 'all', Good: 1, Bad: 0 }, selected: params[:status]), class: 'form-control' %>
                 </div>
                 <div class="field">
                     <%= label_tag 'favorite', 'Favorite' %>
@@ -47,7 +47,7 @@
                     <%= simple_format(card.front) %>
                 </div>
                 <div class="status">
-                    status: <span class="<%= Card::STATUSES[card.status].downcase %>"><%= Card::STATUSES[card.status].downcase %></span>
+                    status: <span class="<%= status_to_s(card.status) %>"><%= status_to_s(card.status) %></span>
                 </div>
             </div>
             <div class="back face">

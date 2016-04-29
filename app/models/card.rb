@@ -1,10 +1,4 @@
 class Card < ActiveRecord::Base
-  STATUSES = {
-    0 => 'Bad',
-    1 => 'Almost',
-    2 => 'Good'
-  }.freeze
-
   SORT_OPTIONS = {
     'updated_at-asc' => 'Last modified: Old to New',
     'updated_at-desc' => 'Last modified: New to Old'
@@ -19,8 +13,8 @@ class Card < ActiveRecord::Base
   validates :front, presence: true, length: { maximum: 5000 }
   validates :back, presence: true, length: { maximum: 5000 }
   validates :memo, length: { maximum: 5000 }
-  validates :status, numericality: { only_integer: true }, inclusion: { in: 0..2 }
   validates :check_count, numericality: { only_integer: true }
+  validates :status, inclusion: { in: [true, false] }
   validates :favorite, inclusion: { in: [true, false] }
 
   scope :by_query, lambda { |query|

@@ -19,7 +19,7 @@
         </div>
         <div class="card-item">
             <div class="left">status</div>
-            <div class="right"><%= Card::STATUSES[@card.status] %></div>
+            <div class="right"><%= status_to_s(@card.status) %></div>
         </div>
         <div class="card-item">
             <div class="left">favorite</div>

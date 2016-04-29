@@ -51,22 +51,19 @@ $ ->
     card_id = $(@).parents('div.card').attr('data-card')
 
     switch status.attr('class')
-      when 'bad'
-        next_status = 'almost'
-        next_stauts_id = 1
-      when 'almost'
-        next_status = 'good'
-        next_stauts_id = 2
       when 'good'
-        next_status = 'bad'
-        next_stauts_id = 0
+        next_status = false
+        next_status_str = 'bad'
+      when 'bad'
+        next_status = true
+        next_status_str = 'good'
 
     $.ajax
       url: "/cards/#{card_id}",
       type: 'PATCH',
       contentType: 'application/json',
       dataType: 'json',
-      data: JSON.stringify({ "status": next_stauts_id }),
+      data: JSON.stringify({ "status": next_status }),
       success: ->
-        status.attr('class', next_status)
-        status.text(next_status)
+        status.attr('class', next_status_str)
+        status.text(next_status_str)
