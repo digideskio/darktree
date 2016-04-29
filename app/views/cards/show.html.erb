@@ -26,10 +26,10 @@
             <div class="right"><%= @card.favorite %></div>
         </div>
         <div class="card-item">
-            <div class="left">tags</div>
+            <div class="left">decks</div>
             <div class="right">
-                <% @card.tags.each do |tag| %>
-                    <%= tag.name %><br>
+                <% @card.decks.each do |deck| %>
+                    <%= deck.name %><br>
                 <% end %>
             </div>
         </div>

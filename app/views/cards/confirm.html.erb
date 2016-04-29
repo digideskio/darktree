@@ -10,7 +10,7 @@
                 <th>back</th>
                 <th>memo</th>
                 <th>status</th>
-                <th>tags</th>
+                <th>decks</th>
             </tr>
             <% @new_cards.each do |card| %>
                 <tr>
@@ -31,8 +31,8 @@
                         <%= hidden_field_tag nil, card.status, name: 'cards[][status]' %>
                     </td>
                     <td>
-                        <%= card.tag_list %>
-                        <%= hidden_field_tag nil, card.tag_list, name: 'cards[][tag_list]' %>
+                        <%= card.deck_list %>
+                        <%= hidden_field_tag nil, card.deck_list, name: 'cards[][deck_list]' %>
                     </td>
                 </tr>
             <% end %>

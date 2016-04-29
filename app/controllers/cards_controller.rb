@@ -2,10 +2,10 @@ class CardsController < ApplicationController
   before_action :set_card, only: [:show, :edit, :update, :destroy, :favorite, :unfavorite, :status]
 
   def index
-    @cards = Card.status_is(params[:status]).tag_in(params[:tags])
+    @cards = Card.status_is(params[:status]).deck_in(params[:decks])
                  .by_query(params[:query]).sort_by(params[:sort])
-                 .by_fav(params[:fav]).page(params[:page]).includes(:tags).order(id: :asc)
-    @tags = Tag.select(:name)
+                 .by_fav(params[:fav]).page(params[:page]).includes(:decks).order(id: :asc)
+    @decks = Deck.select(:name)
   end
 
   def show
@@ -79,12 +79,12 @@ class CardsController < ApplicationController
   end
 
   def card_params
-    params.require(:card).permit(:front, :back, :memo, :check, :status, :favorite, :check_count, :tag_list)
+    params.require(:card).permit(:front, :back, :memo, :check, :status, :favorite, :check_count, :deck_list)
   end
 
   def cards_params
     params.require(:cards).map do |c|
-      c.permit([:front, :back, :memo, :check, :favorite, :check_count, :status, :tag_list])
+      c.permit([:front, :back, :memo, :check, :favorite, :check_count, :status, :deck_list])
     end
   end
 end

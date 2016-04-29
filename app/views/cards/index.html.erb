@@ -10,8 +10,8 @@
         <%= form_tag '', method: 'get' do %>
             <div id="filter-body">
                 <div class="field">
-                    <%= label_tag 'tag', 'Tag' %>
-                    <%= select_tag 'tag', options_from_collection_for_select(@tags, :name, :name, params[:tag]), include_blank: 'All', class: 'form-control' %>
+                    <%= label_tag 'deck', 'Deck' %>
+                    <%= select_tag 'deck', options_from_collection_for_select(@decks, :name, :name, params[:deck]), include_blank: 'All', class: 'form-control' %>
                 </div>
                 <div class="field">
                     <%= label_tag 'status', 'Status' %>
@@ -36,10 +36,10 @@
     <% @cards.each do |card| %>
         <div class="card" data-card="<%= card.id %>" data-check-count="<%= card.check_count %>">
             <div class="front face">
-                <div class="tags">
+                <div class="decks">
                     <ul class="list-inline">
-                        <% card.tags.each do |tag| %>
-                            <li><%= tag.name.truncate(13) %></li>
+                        <% card.decks.each do |deck| %>
+                            <li><%= deck.name.truncate(13) %></li>
                         <% end %>
                     </ul>
                 </div>

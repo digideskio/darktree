@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first
 
-tag_list = [
+deck_list = [
   'foo,bar,baz,abcdefghijklmnopqrstuvwxyz',
   'foo,bar,baz',
   'foo,bar',
@@ -22,7 +22,7 @@ tag_list = [
     status: (0..2).to_a.sample,
     favorite: [0,1].sample,
     check_count: (0..100).to_a.sample,
-    tag_list: tag_list.sample
+    deck_list: deck_list.sample
   )
 
   if c.save

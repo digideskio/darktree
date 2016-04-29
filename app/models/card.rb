@@ -10,11 +10,11 @@ class Card < ActiveRecord::Base
     'updated_at-desc' => 'Last modified: New to Old'
   }.freeze
 
-  has_many :taggings, dependent: :destroy
-  has_many :tags, through: :taggings
+  has_many :card_decks, dependent: :destroy
+  has_many :decks, through: :card_decks
 
-  accepts_nested_attributes_for :tags
-  attr_accessor :tag_list
+  accepts_nested_attributes_for :decks
+  attr_accessor :deck_list
 
   validates :front, presence: true, length: { maximum: 5000 }
   validates :back, presence: true, length: { maximum: 5000 }
@@ -33,8 +33,8 @@ class Card < ActiveRecord::Base
     where(status: status) if status.present?
   }
 
-  scope :tag_in, lambda { |tags|
-    joins(:tags).where(tags: { name: Array(tags) }) if tags.present?
+  scope :deck_in, lambda { |decks|
+    joins(:decks).where(decks: { name: Array(decks) }) if decks.present?
   }
 
   scope :sort_by, lambda { |sort_opt|
@@ -53,20 +53,20 @@ class Card < ActiveRecord::Base
 
   before_save do
     # カンマ区切りで渡されるタグを登録
-    # Tagが既に存在する & Taggingに存在しない -> Taggingのみ新規登録
-    # Tagが存在しない場合 -> Tag新規作成, Tagging新規登録
-    if tag_list.present?
-      taggings.each(&:destroy)
-      tag_list.split(',').each do |tag_name|
-        next unless tag_name.present?
+    # Deckが既に存在する & CardDeckに存在しない -> CardDeckのみ新規登録
+    # Deckが存在しない場合 -> Deck新規作成, CardDeck新規登録
+    if deck_list.present?
+      card_decks.each(&:destroy)
+      deck_list.split(',').each do |deck_name|
+        next unless deck_name.present?
 
-        if Tag.exists?(name: tag_name)
-          tag = Tag.find_by(name: tag_name)
-          unless Tagging.exists?(card_id: id, tag_id: tag.id)
-            tags << tag
+        if Deck.exists?(name: deck_name)
+          deck = Deck.find_by(name: deck_name)
+          unless CardDeck.exists?(card_id: id, deck_id: deck.id)
+            decks << deck
           end
         else
-          tags << Tag.new(name: tag_name)
+          decks << Deck.new(name: deck_name)
         end
       end
     end

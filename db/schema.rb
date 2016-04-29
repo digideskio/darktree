@@ -13,6 +13,15 @@
 
 ActiveRecord::Schema.define(version: 20160220055440) do
 
+  create_table "card_decks", force: :cascade do |t|
+    t.integer  "card_id"
+    t.integer  "deck_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "card_decks", ["card_id", "deck_id"], name: "index_card_decks_on_card_id_and_deck_id", unique: true
+
   create_table "cards", force: :cascade do |t|
     t.text     "front",                       null: false
     t.text     "back",                        null: false
@@ -24,21 +33,12 @@ ActiveRecord::Schema.define(version: 20160220055440) do
     t.datetime "updated_at",                  null: false
   end
 
-  create_table "taggings", force: :cascade do |t|
-    t.integer  "card_id"
-    t.integer  "tag_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "taggings", ["card_id", "tag_id"], name: "index_taggings_on_card_id_and_tag_id", unique: true
-
-  create_table "tags", force: :cascade do |t|
+  create_table "decks", force: :cascade do |t|
     t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "tags", ["name"], name: "index_tags_on_name", unique: true
+  add_index "decks", ["name"], name: "index_decks_on_name", unique: true
 
 end
