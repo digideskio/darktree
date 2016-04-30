@@ -15,11 +15,11 @@
                 </div>
                 <div class="field">
                     <%= label_tag 'status', 'Status' %>
-                    <%= select_tag 'status', options_for_select({ All: 'all', Good: 1, Bad: 0 }, selected: params[:status]), class: 'form-control' %>
+                    <%= select_tag 'status', options_for_select({ All: 'all', learned: 1, 'not-learned': 0 }, selected: params[:status]), class: 'form-control' %>
                 </div>
                 <div class="field">
                     <%= label_tag 'favorite', 'Favorite' %>
-                    <%= select_tag 'fav', options_for_select({ All: 'all', On: 1, Off: 0 }, selected: params[:fav]), class: 'form-control' %>
+                    <%= select_tag 'fav', options_for_select({ All: 'all', on: 1, off: 0 }, selected: params[:fav]), class: 'form-control' %>
                 </div>
                 <div class="field">
                     <%= label_tag 'sort', 'Sort' %>

@@ -24,7 +24,11 @@ class Card < ActiveRecord::Base
   }
 
   scope :status_is, lambda { |status|
-    where(status: status) if status.present?
+    if status == '1'
+      where(status: true)
+    elsif status == '0'
+      where(status: false)
+    end
   }
 
   scope :deck_in, lambda { |decks|
