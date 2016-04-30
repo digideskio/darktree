@@ -62,13 +62,12 @@ div.container {
                     font-size: 70%;
                     text-align: right;
                     color: #a2a2a2;
+                    cursor: pointer;
                     span {
                         font-weight: bold;
-                        text-decoration: underline;
                     }
-                    span.good { color: #39aa56; }
-                    span.almost { color: #ffac14; }
-                    span.bad { color: #db4545; }
+                    .learned { color: #39aa56; }
+                    .not-learned { color: #a2a2a2; }
                 }
             }
             div.back {

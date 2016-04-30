@@ -1,9 +1,9 @@
 module CardHelper
   def status_to_s(status)
     if status
-      'good'
+      'learned'
     else
-      'bad'
+      'not-learned'
     end
   end
 end

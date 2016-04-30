@@ -51,12 +51,12 @@ $ ->
     card_id = $(@).parents('div.card').attr('data-card')
 
     switch status.attr('class')
-      when 'good'
+      when 'learned'
         next_status = false
-        next_status_str = 'bad'
-      when 'bad'
+        next_status_str = 'not-learned'
+      when 'not-learned'
         next_status = true
-        next_status_str = 'good'
+        next_status_str = 'learned'
 
     $.ajax
       url: "/cards/#{card_id}",
@@ -66,4 +66,4 @@ $ ->
       data: JSON.stringify({ "status": next_status }),
       success: ->
         status.attr('class', next_status_str)
-        status.text(next_status_str)
+        status.children('span').text(next_status_str)

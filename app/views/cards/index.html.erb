@@ -47,7 +47,10 @@
                     <%= simple_format(card.front) %>
                 </div>
                 <div class="status">
-                    status: <span class="<%= status_to_s(card.status) %>"><%= status_to_s(card.status) %></span>
+                    <span class="<%= status_to_s(card.status) %>">
+                        <i class="fa fa-check-square"></i>
+                        <span><%= status_to_s(card.status) %></span>
+                    </span>
                 </div>
             </div>
             <div class="back face">
