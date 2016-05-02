@@ -12,7 +12,6 @@ class Card < ActiveRecord::Base
 
   validates :front, presence: true, length: { maximum: 5000 }
   validates :back, presence: true, length: { maximum: 5000 }
-  validates :memo, length: { maximum: 5000 }
   validates :check_count, numericality: { only_integer: true }
   validates :status, inclusion: { in: [true, false] }
   validates :favorite, inclusion: { in: [true, false] }

@@ -20,10 +20,6 @@
         <%= f.label :back %>
         <%= f.text_area :back, class: 'back', placeholder: "Mount Everest\n (!) you can use Markdown syntax!" %>
     </div>
-    <div class="field">
-        <%= f.label :memo %>
-        <%= f.text_area :memo, class: 'memo', placeholder: 'source: Wikipedia' %>
-    </div>
 
     <%= f.submit 'Submit', class: 'btn btn-primary', data: { disable_with: 'Submitting...' } %>
 <% end %>

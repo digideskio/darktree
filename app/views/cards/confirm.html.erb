@@ -8,7 +8,6 @@
             <tr class="table-header">
                 <th>front</th>
                 <th>back</th>
-                <th>memo</th>
                 <th>status</th>
                 <th>decks</th>
             </tr>
@@ -21,14 +20,6 @@
                     <td>
                         <%= simple_format(card.back) %>
                         <%= hidden_field_tag nil, card.back, name: 'cards[][back]' %>
-                    </td>
-                    <td>
-                        <%= simple_format(card.memo) %>
-                        <%= hidden_field_tag nil, card.memo, name: 'cards[][memo]' %>
-                    </td>
-                    <td>
-                        <%= card.status %>
-                        <%= hidden_field_tag nil, card.status, name: 'cards[][status]' %>
                     </td>
                     <td>
                         <%= card.deck_list %>

@@ -3,9 +3,8 @@ class CreateCards < ActiveRecord::Migration
     create_table :cards do |t|
       t.text :front, null: false
       t.text :back, null: false
-      t.text :memo
-      t.boolean :status, default: false
       t.integer :check_count, default: 0
+      t.boolean :status, default: false
       t.boolean :favorite, default: false
       t.timestamps null: false
     end
