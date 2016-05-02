@@ -1,4 +1,5 @@
 class Card < ActiveRecord::Base
+  # TODO: ヘルパーに書いた方が良さそう？
   SORT_OPTIONS = {
     'updated_at-asc' => 'Last modified: Old to New',
     'updated_at-desc' => 'Last modified: New to Old'

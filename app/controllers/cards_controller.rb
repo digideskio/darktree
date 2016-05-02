@@ -2,6 +2,7 @@ class CardsController < ApplicationController
   before_action :set_card, only: [:show, :edit, :update, :destroy, :favorite, :unfavorite, :status]
 
   def index
+    # FIXME: 何かが良くない気がする
     @cards = Card.status_is(params[:status]).deck_in(params[:deck])
                  .by_query(params[:query]).sort_by(params[:sort])
                  .by_fav(params[:fav]).page(params[:page]).includes(:decks).order(id: :asc)
