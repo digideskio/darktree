@@ -10,7 +10,7 @@
     <% end %>
     <div class="field">
         <%= f.label :deck_list, 'Deck'%>
-        <%= f.text_field :deck_list, placeholder: 'deck1,deck2,deck3', value: @card.decks.pluck(:name).join(',') %>
+        <%= f.text_field :deck_list, placeholder: 'deckname', value: @card.decks.pluck(:name).join(',') %>
     </div>
     <div class="field">
         <%= f.label :front %>
