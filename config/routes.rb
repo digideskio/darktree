@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'cards#index'
+  resources :decks
   resources :cards do
     collection do
       post 'import'
