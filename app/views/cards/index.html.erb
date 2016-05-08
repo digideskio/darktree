@@ -1,8 +1,8 @@
 <%= render "shared/alert" %>
 <% if @deck.present? %>
     <h2>
-        <%= @deck.name %>
-        <span><%= @cards.count%>cards</span>
+        <%= link_to @deck.name, deck_cards_path(@deck.id) %>
+        <span><%= @deck.cards.count %>cards</span>
     </h2>
     <div id="filter-and-sort" class="dropdown">
         <a href="#" id="d-label1" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
