@@ -1,33 +1,36 @@
 <%= render "shared/alert" %>
-<div id="page-info">
-    <%= page_entries_info @cards %>
-</div>
-<div id="filter-and-sort" class="dropdown">
-    <a href="#" id="d-label1" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Filter &amp; Sort <span class="caret"></span>
-    </a>
-    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="d-label1">
-        <%= form_tag '', method: 'get' do %>
-            <div id="filter-body">
-                <div class="field">
-                    <%= label_tag 'status', 'Status' %>
-                    <%= select_tag 'status', options_for_select({ All: 'all', learned: 1, 'not-learned': 0 }, selected: params[:status]), class: 'form-control' %>
+<% if @deck.present? %>
+    <h2>
+        <%= @deck.name %>
+        <span><%= @cards.count%>cards</span>
+    </h2>
+    <div id="filter-and-sort" class="dropdown">
+        <a href="#" id="d-label1" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Filter &amp; Sort <span class="caret"></span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="d-label1">
+            <%= form_tag '', method: 'get' do %>
+                <div id="filter-body">
+                    <div class="field">
+                        <%= label_tag 'status', 'Status' %>
+                        <%= select_tag 'status', options_for_select({ All: 'all', learned: 1, 'not-learned': 0 }, selected: params[:status]), class: 'form-control' %>
+                    </div>
+                    <div class="field">
+                        <%= label_tag 'favorite', 'Favorite' %>
+                        <%= select_tag 'fav', options_for_select({ All: 'all', on: 1, off: 0 }, selected: params[:fav]), class: 'form-control' %>
+                    </div>
+                    <div class="field">
+                        <%= label_tag 'sort', 'Sort' %>
+                        <%= select_tag 'sort', options_from_collection_for_select(Card::SORT_OPTIONS, :first, :last, params[:sort]), include_blank: true, class: 'form-control' %>
+                    </div>
                 </div>
-                <div class="field">
-                    <%= label_tag 'favorite', 'Favorite' %>
-                    <%= select_tag 'fav', options_for_select({ All: 'all', on: 1, off: 0 }, selected: params[:fav]), class: 'form-control' %>
+                <div id="filter-footer">
+                    <%= submit_tag 'Filter', class: 'btn btn-primary' %>
                 </div>
-                <div class="field">
-                    <%= label_tag 'sort', 'Sort' %>
-                    <%= select_tag 'sort', options_from_collection_for_select(Card::SORT_OPTIONS, :first, :last, params[:sort]), include_blank: true, class: 'form-control' %>
-                </div>
-            </div>
-            <div id="filter-footer">
-                <%= submit_tag 'Filter', class: 'btn btn-primary' %>
-            </div>
-        <% end %>
+            <% end %>
+        </div>
     </div>
-</div>
+<% end %>
 <div id="cards">
     <% @cards.each do |card| %>
         <div class="card" data-card="<%= card.id %>" data-check-count="<%= card.check_count %>">

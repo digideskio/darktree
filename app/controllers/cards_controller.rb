@@ -5,6 +5,7 @@ class CardsController < ApplicationController
     # FIXME: 何かが良くない気がする
     @cards = Card.deck_is(params[:deck_id]).status_is(params[:status]).fav_is(params[:fav])
                  .sort_by(params[:sort]).page(params[:page]).includes(:decks).order(id: :asc)
+    @deck = Deck.find_by(id: params[:deck_id])
     @decks = Deck.select(:name)
   end
 

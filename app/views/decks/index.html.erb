@@ -1,17 +1,20 @@
-<div id="decks">
-    <% @decks.each do |deck| %>
-        <%= link_to deck_cards_path(deck.id), class: 'deck' do %>
-            <div class="deck-main">
-                <span class="deck-name">
-                    <%= deck.name %>
-                </span>
-                <span class="deck-info">
-                    <%= "#{deck.cards.count}cards" %>
-                </span>
-            </div>
-            <div class="deck-link">
-                <i class="fa fa-chevron-right" aria-hidden="true"></i>
-            </div>
+<% if @decks.present? %>
+    <div id="decks">
+        <h2>All decks</h2>
+        <% @decks.each do |deck| %>
+            <%= link_to deck_cards_path(deck.id), class: 'deck' do %>
+                <div class="deck-main">
+                    <span class="deck-name">
+                        <%= deck.name %>
+                    </span>
+                    <span class="deck-info">
+                        <%= "#{deck.cards.count}cards" %>
+                    </span>
+                </div>
+                <div class="deck-link">
+                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                </div>
+            <% end %>
         <% end %>
-    <% end %>
-</div>
+    </div>
+<% end %>

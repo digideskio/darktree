@@ -19,6 +19,12 @@ p,ul {
 
 body {
     background: #fafafa;
+    font-family: "open sans",opensans-webfont,"lucida grande","lucida sans unicode",arial,sans-serif;
+
+    h2 {
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
 
     // header
     header {
