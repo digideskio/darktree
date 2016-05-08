@@ -35,13 +35,6 @@
     <% @cards.each do |card| %>
         <div class="card" data-card="<%= card.id %>" data-check-count="<%= card.check_count %>">
             <div class="front face">
-                <div class="decks">
-                    <ul class="list-inline">
-                        <% card.decks.each do |deck| %>
-                            <li><%= deck.name.truncate(13) %></li>
-                        <% end %>
-                    </ul>
-                </div>
                 <div class="content">
                     <%= simple_format(card.front) %>
                 </div>
