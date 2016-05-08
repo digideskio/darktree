@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-  root 'cards#index'
-  resources :decks
-  resources :cards do
+  root 'decks#index'
+
+  resources :decks, except: [:show] do
+    resources :cards, only: [:index]
+  end
+
+  resources :cards, except: [:index] do
     collection do
       post 'import'
       post 'confirm'

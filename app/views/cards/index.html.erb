@@ -10,10 +10,6 @@
         <%= form_tag '', method: 'get' do %>
             <div id="filter-body">
                 <div class="field">
-                    <%= label_tag 'deck', 'Deck' %>
-                    <%= select_tag 'deck', options_from_collection_for_select(@decks, :name, :name, params[:deck]), include_blank: 'All', class: 'form-control' %>
-                </div>
-                <div class="field">
                     <%= label_tag 'status', 'Status' %>
                     <%= select_tag 'status', options_for_select({ All: 'all', learned: 1, 'not-learned': 0 }, selected: params[:status]), class: 'form-control' %>
                 </div>

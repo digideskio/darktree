@@ -24,29 +24,29 @@ class Card < ActiveRecord::Base
   }
 
   scope :status_is, lambda { |status|
-    if status == '1'
+    if status.to_i == 1
       where(status: true)
-    elsif status == '0'
+    elsif status.to_i == 0
       where(status: false)
     end
   }
 
-  scope :deck_in, lambda { |decks|
-    joins(:decks).where(decks: { name: Array(decks) }) if decks.present?
+  scope :fav_is, lambda { |fav|
+    if fav.to_i == 1
+      where(favorite: true)
+    elsif fav.to_i == 0
+      where(favorite: false)
+    end
+  }
+
+  scope :deck_is, lambda { |deck_id|
+    joins(:decks).where(decks: { id: deck_id }) if deck_id.present?
   }
 
   scope :sort_by, lambda { |sort_opt|
     return unless SORT_OPTIONS.key?(sort_opt)
     column, order = sort_opt.split('-')
     order(column => order.to_sym, id: :asc)
-  }
-
-  scope :by_fav, lambda { |fav|
-    if fav == '1'
-      where(favorite: true)
-    elsif fav == '0'
-      where(favorite: false)
-    end
   }
 
   before_save do
