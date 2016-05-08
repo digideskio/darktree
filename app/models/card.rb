@@ -24,17 +24,17 @@ class Card < ActiveRecord::Base
   }
 
   scope :status_is, lambda { |status|
-    if status.to_i == 1
+    if status == '1'
       where(status: true)
-    elsif status.to_i == 0
+    elsif status == '0'
       where(status: false)
     end
   }
 
   scope :fav_is, lambda { |fav|
-    if fav.to_i == 1
+    if fav == '1'
       where(favorite: true)
-    elsif fav.to_i == 0
+    elsif fav == '0'
       where(favorite: false)
     end
   }
