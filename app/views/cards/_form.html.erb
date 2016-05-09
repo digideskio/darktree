@@ -10,7 +10,13 @@
     <% end %>
     <div class="field">
         <%= f.label :deck_list, 'Deck'%>
-        <%= f.text_field :deck_list, placeholder: 'deckname', value: @card.decks.pluck(:name).join(',') %>
+        <ul id="card_deck_list">
+            <% if @card.decks.present? %>
+                <% @card.decks.pluck(:name).each do |deck| %>
+                    <li><%= deck %></li>
+                <% end %>
+            <% end %>
+        </ul>
     </div>
     <div class="field">
         <%= f.label :front %>

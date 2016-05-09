@@ -188,10 +188,12 @@ div.container {
                 margin-bottom: 10px;
                 input[type="text"],textarea {
                     width: 100%;
-                    padding: 5px 6px;
-                    border: 1px solid #cccccc;
                     font-family: 'Inconsolata';
-                    border-radius: 2px;
+                }
+                textarea {
+                    padding: 5px 6px;
+                    border: 1px solid #aaa;
+                    border-radius: 4px;
                 }
                 textarea.front {
                     min-height: 80px;

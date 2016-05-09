@@ -67,3 +67,24 @@ $ ->
       success: ->
         status.attr('class', next_status_str)
         status.children('span').text(next_status_str)
+
+# Autocomplete when input deck
+$ ->
+  $('#card_deck_list').tagit({
+      fieldName: "card[deck_list]",
+      singleField: true,
+      tagSource: (req, res) ->
+        console.log(req)
+        $.ajax
+          url: "/test.txt", # TODO: APIリクエストに変更する
+          contentType: "application/json",
+          dataType: "json",
+          data: req,
+          success: (data) ->
+            return res(data)
+      autocomplete: {
+        delay: 0,
+        minLength: 2,
+        source: this.tagSource
+      }
+  })
