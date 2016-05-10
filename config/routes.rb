@@ -3,6 +3,9 @@ Rails.application.routes.draw do
 
   resources :decks, except: [:show] do
     resources :cards, only: [:index]
+    collection do
+      get 'search'
+    end
   end
 
   resources :cards, except: [:index] do

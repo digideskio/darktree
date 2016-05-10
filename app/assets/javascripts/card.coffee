@@ -76,7 +76,7 @@ $ ->
       tagSource: (req, res) ->
         console.log(req)
         $.ajax
-          url: "/test.txt", # TODO: APIリクエストに変更する
+          url: "/decks/search",
           contentType: "application/json",
           dataType: "json",
           data: req,
