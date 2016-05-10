@@ -3,7 +3,6 @@ class DecksController < ApplicationController
     @decks = Deck.all.order(id: :desc)
   end
 
-  # /decks/search?term=
   def search
     decks = if params[:term].present?
               Deck.where('name LIKE ?', "#{params[:term]}%").pluck(:name)
