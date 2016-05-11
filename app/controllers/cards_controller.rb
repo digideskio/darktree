@@ -18,7 +18,11 @@ class CardsController < ApplicationController
   def create
     @card = Card.new(card_params)
     if @card.save
-      redirect_to root_path, notice: { success: 'Card was successfully created.' }
+      if @card.decks.first.present?
+        redirect(deck_cards_path(@card.decks.first.id), success_msg(:create))
+      else
+        redirect(root_path, success_msg(:create))
+      end
     else
       render action: 'new'
     end
@@ -32,7 +36,13 @@ class CardsController < ApplicationController
 
     respond_to do |format|
       if @card.update(card_params)
-        format.html { redirect_to @card, notice: { success: 'Card was successfully updated.' } }
+        format.html do
+          if @card.decks.first.present?
+            redirect(deck_cards_path(@card.decks.first.id), success_msg(:update))
+          else
+            redirect(root_path, success_msg(:update))
+          end
+        end
         format.json { render json: @card }
       else
         format.html { render :edit }
@@ -43,7 +53,7 @@ class CardsController < ApplicationController
 
   def destroy
     @card.destroy
-    redirect_to root_path, notice: { success: 'Card was successfully deleted.' }
+    redirect_to root_path, notice: { success: success_msg(:destroy) }
   end
 
   def confirm
@@ -69,13 +79,30 @@ class CardsController < ApplicationController
       cards.each(&:save!)
     end
 
-    redirect_to root_path, notice: { success: 'Cards were successfully imported.' }
+    redirect_to root_path, notice: { success: success_msg(:import) }
   end
 
   private
 
   def set_card
     @card = Card.find_by(id: params[:id])
+  end
+
+  def success_msg(type)
+    case type
+    when :create
+      'Card was successfully created'
+    when :update
+      'Card was successfully updated'
+    when :destroy
+      'Card was successfully deleted'
+    when :import
+      'Cards were successfully imported'
+    end
+  end
+
+  def redirect(path, message)
+    redirect_to path, notice: { success: message }
   end
 
   def card_params
