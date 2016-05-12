@@ -8,7 +8,7 @@
             <tr class="table-header">
                 <th>front</th>
                 <th>back</th>
-                <th>decks</th>
+                <th>deck</th>
             </tr>
             <% @new_cards.each do |card| %>
                 <tr>
@@ -21,8 +21,8 @@
                         <%= hidden_field_tag nil, card.back, name: 'cards[][back]' %>
                     </td>
                     <td>
-                        <%= card.deck_list %>
-                        <%= hidden_field_tag nil, card.deck_list, name: 'cards[][deck_list]' %>
+                        <%= card.deck_name %>
+                        <%= hidden_field_tag nil, card.deck_name, name: 'cards[][deck_name]' %>
                     </td>
                 </tr>
             <% end %>

@@ -5,11 +5,9 @@ class Card < ActiveRecord::Base
     'updated_at-desc' => 'Last modified: New to Old'
   }.freeze
 
-  has_many :card_decks, dependent: :destroy
-  has_many :decks, through: :card_decks
+  belongs_to :deck
 
-  accepts_nested_attributes_for :decks
-  attr_accessor :deck_list
+  attr_accessor :deck_name
 
   validates :front, presence: true, length: { maximum: 5000 }
   validates :back, presence: true, length: { maximum: 5000 }
@@ -40,7 +38,7 @@ class Card < ActiveRecord::Base
   }
 
   scope :deck_is, lambda { |deck_id|
-    joins(:decks).where(decks: { id: deck_id }) if deck_id.present?
+    joins(:deck).where(decks: { id: deck_id }) if deck_id.present?
   }
 
   scope :sort_by, lambda { |sort_opt|
@@ -50,23 +48,17 @@ class Card < ActiveRecord::Base
   }
 
   before_save do
-    # カンマ区切りで渡されるタグを登録
-    # Deckが既に存在する & CardDeckに存在しない -> CardDeckのみ新規登録
-    # Deckが存在しない場合 -> Deck新規作成, CardDeck新規登録
-    if deck_list.present?
-      card_decks.each(&:destroy)
-      deck_list.split(',').each do |deck_name|
-        next unless deck_name.present?
-
-        if Deck.exists?(name: deck_name)
-          deck = Deck.find_by(name: deck_name)
-          unless CardDeck.exists?(card_id: id, deck_id: deck.id)
-            decks << deck
-          end
-        else
-          decks << Deck.new(name: deck_name)
-        end
+    if deck_name.present?
+      if Deck.exists?(name: deck_name)
+        # 同名のdeckが既に存在する場合 -> Deckの流用
+        self.deck = Deck.find_by(name: deck_name)
+      else
+        # 同名のdeckが存在しない場合 -> deckの新規登録の後、利用
+        self.deck = Deck.create(name: deck_name)
       end
     end
+
+    # デフォルトのデッキ
+    self.deck_id = 1 if self.deck.blank?
   end
 end

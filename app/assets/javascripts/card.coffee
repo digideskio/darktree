@@ -70,9 +70,10 @@ $ ->
 
 # Autocomplete when input deck
 $ ->
-  $('#card_deck_list').tagit({
-      fieldName: "card[deck_list]",
+  $('#card_deck').tagit({
+      fieldName: "card[deck_name]",
       singleField: true,
+      tagLimit: 1,
       tagSource: (req, res) ->
         console.log(req)
         $.ajax

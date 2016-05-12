@@ -18,11 +18,9 @@
             <div class="right"><%= @card.favorite %></div>
         </div>
         <div class="card-item">
-            <div class="left">decks</div>
+            <div class="left">deck</div>
             <div class="right">
-                <% @card.decks.each do |deck| %>
-                    <%= deck.name %><br>
-                <% end %>
+                <%= @card.deck.name %>
             </div>
         </div>
         <div class="card-item">

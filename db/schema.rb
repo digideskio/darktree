@@ -11,23 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160220055440) do
-
-  create_table "card_decks", force: :cascade do |t|
-    t.integer  "card_id"
-    t.integer  "deck_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "card_decks", ["card_id", "deck_id"], name: "index_card_decks_on_card_id_and_deck_id", unique: true
+ActiveRecord::Schema.define(version: 20160220055126) do
 
   create_table "cards", force: :cascade do |t|
+    t.integer  "deck_id",                     null: false
     t.text     "front",                       null: false
     t.text     "back",                        null: false
-    t.text     "memo"
-    t.boolean  "status",      default: false
     t.integer  "check_count", default: 0
+    t.boolean  "status",      default: false
     t.boolean  "favorite",    default: false
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false

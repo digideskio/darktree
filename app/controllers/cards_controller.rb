@@ -3,8 +3,8 @@ class CardsController < ApplicationController
 
   def index
     # FIXME: 何かが良くない気がする
-    @cards = Card.deck_is(params[:deck_id]).status_is(params[:status]).fav_is(params[:fav])
-                 .sort_by(params[:sort]).page(params[:page]).includes(:decks).order(id: :asc)
+    @cards = Card.deck_is(params[:deck_id]).status_is(params[:status])
+                 .fav_is(params[:fav]).sort_by(params[:sort]).page(params[:page]).order(id: :asc)
     @deck = Deck.find_by(id: params[:deck_id])
   end
 
@@ -18,11 +18,7 @@ class CardsController < ApplicationController
   def create
     @card = Card.new(card_params)
     if @card.save
-      if @card.decks.first.present?
-        redirect(deck_cards_path(@card.decks.first.id), success_msg(:create))
-      else
-        redirect(root_path, success_msg(:create))
-      end
+      redirect(deck_cards_path(@card.deck.id), success_msg(:create))
     else
       render action: 'new'
     end
@@ -36,13 +32,7 @@ class CardsController < ApplicationController
 
     respond_to do |format|
       if @card.update(card_params)
-        format.html do
-          if @card.decks.first.present?
-            redirect(deck_cards_path(@card.decks.first.id), success_msg(:update))
-          else
-            redirect(root_path, success_msg(:update))
-          end
-        end
+        format.html { redirect(deck_cards_path(@card.deck.id), success_msg(:update)) }
         format.json { render json: @card }
       else
         format.html { render :edit }
@@ -106,12 +96,12 @@ class CardsController < ApplicationController
   end
 
   def card_params
-    params.require(:card).permit(:front, :back, :status, :favorite, :check_count, :deck_list)
+    params.require(:card).permit(:front, :back, :status, :favorite, :check_count, :deck_name, :deck_id)
   end
 
   def cards_params
     params.require(:cards).map do |c|
-      c.permit([:front, :back, :status, :favorite, :check_count, :deck_list])
+      c.permit([:front, :back, :status, :favorite, :check_count, :deck_name, :deck_id])
     end
   end
 end
