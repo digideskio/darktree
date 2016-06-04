@@ -1,8 +1,19 @@
 class DecksController < ApplicationController
-  before_action :set_deck, only: [:update, :destroy]
+  before_action :set_deck, only: [:update, :destroy, :show]
 
   def index
     @decks = Deck.all.order(id: :desc)
+    respond_to do |format|
+      format.html
+      format.json { render json: @decks }
+    end
+  end
+
+  def show
+    respond_to do |format|
+      format.html
+      format.json { render json: @deck }
+    end
   end
 
   def create
@@ -54,7 +65,7 @@ class DecksController < ApplicationController
   private
 
   def set_deck
-    @deck = Deck.find_by(id: params[:id])
+    @deck = Deck.find_by(id: params[:id]) || {}
   end
 
   def deck_params

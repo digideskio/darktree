@@ -1,14 +1,25 @@
 class CardsController < ApplicationController
   before_action :set_card, only: [:show, :edit, :update, :destroy]
 
+  def edit; end
+
   def index
     # FIXME: 何かが良くない気がする
     @cards = Card.deck_is(params[:deck_id]).status_is(params[:status])
                  .fav_is(params[:fav]).sort_by(params[:sort]).page(params[:page]).order(id: :asc)
     @deck = Deck.find_by(id: params[:deck_id])
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @cards }
+    end
   end
 
   def show
+    respond_to do |format|
+      format.html
+      format.json { render json: @card }
+    end
   end
 
   def new
@@ -17,14 +28,16 @@ class CardsController < ApplicationController
 
   def create
     @card = Card.new(card_params)
-    if @card.save
-      redirect(deck_cards_path(@card.deck.id), success_msg(:create))
-    else
-      render action: 'new'
-    end
-  end
 
-  def edit
+    respond_to do |format|
+      if @card.save
+        format.html { redirect(deck_cards_path(@card.deck.id), success_msg(:create)) }
+        format.json { render json: @card }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @card.errors, status: 400 }
+      end
+    end
   end
 
   def update
@@ -43,7 +56,11 @@ class CardsController < ApplicationController
 
   def destroy
     @card.destroy
-    redirect_to root_path, notice: { success: success_msg(:destroy) }
+
+    respond_to do |format|
+      format.html { redirect_to root_path, notice: { success: success_msg(:destroy) } }
+      format.json { render json: nil, status: 204 }
+    end
   end
 
   def confirm
@@ -75,7 +92,7 @@ class CardsController < ApplicationController
   private
 
   def set_card
-    @card = Card.find_by(id: params[:id])
+    @card = Card.find_by(id: params[:id]) || {}
   end
 
   def success_msg(type)
