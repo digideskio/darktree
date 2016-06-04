@@ -15,7 +15,7 @@
     <div id="card-import-form" class="tab-pane fade">
         <%= form_tag confirm_cards_path, multipart: true do %>
             <div class="field">
-                <%= label_tag :file, 'CSV File' %>
+                <%= label_tag :file, 'CSV File', class: 'required-entity' %>
                 <%= file_field_tag :file %>
             </div>
             <%= submit_tag :import, class: 'btn btn-primary', data: { disable_with: 'Loading...' } %>
