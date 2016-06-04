@@ -9,7 +9,7 @@
         </div>
     <% end %>
     <div class="field">
-        <%= f.label :deck, 'Deck'%>
+        <%= f.label :deck, class: 'required-entity' %>
         <ul id="card_deck">
             <% if @card.deck.present? %>
                 <li><%= @card.deck.name %></li>
@@ -17,11 +17,11 @@
         </ul>
     </div>
     <div class="field">
-        <%= f.label :front %>
+        <%= f.label :front, class: 'required-entity' %>
         <%= f.text_area :front, class: 'front', placeholder: 'What is the most highest mountain in the world?' %>
     </div>
     <div class="field">
-        <%= f.label :back %>
+        <%= f.label :back, class: 'required-entity' %>
         <%= f.text_area :back, class: 'back', placeholder: "Mount Everest\n (!) you can use Markdown syntax!" %>
     </div>
 

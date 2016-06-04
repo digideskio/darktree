@@ -210,8 +210,11 @@ div.container {
                     border: 1px solid #cccccc;
                     font-size: 80%;
                 }
-                label {
-                    display: block;
+                label.required-entity {
+                    &:after {
+                        color: red;
+                        content: " *"
+                    }
                 }
             }
         }
