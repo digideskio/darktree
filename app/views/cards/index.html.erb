@@ -25,6 +25,32 @@
 <div id="cards">
     <div id="cards-inner" class="container">
         <% if params[:mode] == 'view' %>
+            <% @cards.each do |card| %>
+                <div class="expanded-card">
+                    <div class="front">
+                        <%= simple_format(card.front) %>
+                    </div>
+                    <div class="back">
+                        <%= md(card.back) %>
+                    </div>
+                    <div class="card-info">
+                        <ul>
+                            <li class="check-count" title="Check count">
+                                <i class="fa fa-check"></i> <span><%= card.check_count %></span>
+                            </li>
+                            <li class="fav" title="Favorit">
+                                <i class="fa fa-star <%= 'favorited' if card.favorite %>"></i>
+                            </li>
+                            <li class="status">
+                                <span class="<%= status_to_s(card.status) %>">
+                                    <i class="fa fa-check-square"></i>
+                                    <span><%= status_to_s(card.status) %></span>
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            <% end %>
         <% else %>
           <div id="filter-and-sort" class="dropdown">
               <a href="#" id="d-label1" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

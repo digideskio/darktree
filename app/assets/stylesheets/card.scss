@@ -45,6 +45,39 @@ div#actions {
     }
 }
 
+div.front, div.back {
+    overflow: hidden;
+    word-break: break-all;
+    padding: 15px;
+}
+
+div.front {
+    background: #fff;
+    display: block;
+}
+
+div.back {
+    background: #eee;
+    ul {
+        margin-left: 20px;
+    }
+    p,ul {
+        font-size: 80%;
+    }
+    thead > tr {
+        border-bottom: 1px solid #cccccc;
+    }
+    td {
+        padding: 2px 5px;
+    }
+    img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 5px 0;
+    }
+}
+
 div#cards {
     font-size: 1.2em;
     background: #fdfdfe;
@@ -79,23 +112,19 @@ div#cards {
             }
         }
 
-        div.card {
+        div.card, div.expanded-card {
             border: 1px solid #ccc;
             margin-bottom: 10px;
+        }
+
+        div.card {
             perspective: 800;
             transform-style: preserve-3d;
             transition: 0.3s;
             div.face {
                 backface-visibility: hidden;
             }
-            div.front, div.back {
-                overflow: hidden;
-                word-break:break-all;
-            }
             div.front {
-                display: block;
-                padding: 15px;
-                background: #fff;
                 position: relative;
                 div.status {
                     font-size: 70%;
@@ -110,31 +139,42 @@ div#cards {
                 }
             }
             div.back {
-                background: #eee;
-                font-family: 'Inconsolata';
-                padding: 15px;
                 transform: rotateY(180deg);
                 display:none;
+            }
+        }
+
+        div.expanded-card {
+            div.front, div.back {
+                border-bottom: 1px solid #ccc;
+            }
+            div.card-info {
+                background: #f8f8f8;
                 ul {
-                    margin-left: 20px;
-                }
-                p,ul {
-                    font-size: 80%;
-                }
-                thead > tr {
-                    border-bottom: 1px solid #cccccc;
-                }
-                td {
-                    padding: 2px 5px;
-                }
-                img {
-                    display: block;
-                    max-width: 100%;
-                    height: auto;
-                    margin: 5px 0;
+                    list-style-type: none;
+                    display: flex;
+                    li {
+                        font-size: 80%;
+                        padding: 5px 0;
+                        width: 100%;
+                        text-align: center;
+                        border-right: 1px solid #ccc;
+                        &:last-child { border-right: none; }
+                    }
+                    li.fav {
+                        i.favorited {
+                            font-weight: bold;
+                            color: #FDCF04;
+                        }
+                    }
+                    li.status {
+                        .learned { color: #39aa56; }
+                        .not-learned { color: #a2a2a2; }
+                    }
                 }
             }
         }
+
         div.card.flipped {
             transform: rotatey(180deg);
             .front {
