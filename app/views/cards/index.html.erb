@@ -25,82 +25,12 @@
 <div id="cards">
     <div id="cards-inner" class="container">
         <% if params[:mode] == 'view' %>
-            <% @cards.each do |card| %>
-                <div class="expanded-card" data-card="<%= card.id %>">
-                    <div class="front">
-                        <%= simple_format(card.front) %>
-                    </div>
-                    <div class="back">
-                        <%= md(card.back) %>
-                    </div>
-                    <div class="card-info">
-                        <ul>
-                            <li class="check-count" title="Check count">
-                                <i class="fa fa-check"></i> <span><%= card.check_count %></span>
-                            </li>
-                            <li class="fav" title="Favorit">
-                                <i class="fa fa-star <%= 'favorited' if card.favorite %>"></i>
-                            </li>
-                            <li class="status">
-                                <span class="<%= status_to_s(card.status) %>">
-                                    <i class="fa fa-check-square"></i>
-                                    <span><%= status_to_s(card.status) %></span>
-                                </span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            <% end %>
+            <%= render "view_card" %>
         <% else %>
-          <div id="filter-and-sort" class="dropdown">
-              <a href="#" id="d-label1" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Filter &amp; Sort <span class="caret"></span>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="d-label1">
-                  <%= form_tag '', method: 'get' do %>
-                      <div id="filter-body">
-                          <div class="field">
-                              <%= label_tag 'status', 'Status' %>
-                              <%= select_tag 'status', options_for_select({ All: 'all', learned: 1, 'not-learned': 0 }, selected: params[:status]), class: 'form-control' %>
-                          </div>
-                          <div class="field">
-                              <%= label_tag 'favorite', 'Favorite' %>
-                              <%= select_tag 'fav', options_for_select({ All: 'all', on: 1, off: 0 }, selected: params[:fav]), class: 'form-control' %>
-                          </div>
-                          <div class="field">
-                              <%= label_tag 'sort', 'Sort' %>
-                              <%= select_tag 'sort', options_from_collection_for_select(Card::SORT_OPTIONS, :first, :last, params[:sort]), include_blank: true, class: 'form-control' %>
-                          </div>
-                      </div>
-                      <div id="filter-footer">
-                          <%= submit_tag 'Filter', class: 'btn btn-primary' %>
-                      </div>
-                  <% end %>
-              </div>
-          </div>
-          <% @cards.each do |card| %>
-              <div class="card" data-card="<%= card.id %>" data-check-count="<%= card.check_count %>">
-                  <div class="front face">
-                      <div class="content">
-                          <%= simple_format(card.front) %>
-                      </div>
-                      <div class="status">
-                          <span class="<%= status_to_s(card.status) %>">
-                              <i class="fa fa-check-square"></i>
-                              <span><%= status_to_s(card.status) %></span>
-                          </span>
-                      </div>
-                  </div>
-                  <div class="back face">
-                      <div class="content">
-                          <%= md(card.back) %>
-                      </div>
-                  </div>
-              </div>
-          <% end %>
-          <div id="pagination">
-              <%= paginate @cards, window: 5 %>
-          </div>
+            <%= render "learn_card" %>
         <% end %>
+        <div id="pagination">
+            <%= paginate @cards, window: 5 %>
+        </div>
     </div>
 </div>

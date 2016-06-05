@@ -1,0 +1,26 @@
+<% @cards.each do |card| %>
+    <div class="expanded-card" data-card="<%= card.id %>">
+        <div class="front">
+            <%= simple_format(card.front) %>
+        </div>
+        <div class="back">
+            <%= md(card.back) %>
+        </div>
+        <div class="card-info">
+            <ul>
+                <li class="check-count" title="Check count">
+                    <i class="fa fa-check"></i> <span><%= card.check_count %></span>
+                </li>
+                <li class="fav" title="Favorit">
+                    <i class="fa fa-star <%= 'favorited' if card.favorite %>"></i>
+                </li>
+                <li class="status">
+                    <span class="<%= status_to_s(card.status) %>">
+                        <i class="fa fa-check-square"></i>
+                        <span><%= status_to_s(card.status) %></span>
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+<% end %>
