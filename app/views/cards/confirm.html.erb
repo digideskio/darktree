@@ -1,32 +1,36 @@
-<%= form_tag import_cards_path do %>
-    <div class="confirm-message">
-        <p>Import following <%= @new_cards.count %> cards. OK?</p>
-    </div>
+<div id="confirm-cards">
+    <div id="confirm-cards-inner" class="container">
+        <%= form_tag import_cards_path do %>
+            <div class="confirm-message">
+                <p>Import following <%= @new_cards.count %> cards. OK?</p>
+            </div>
 
-    <div id="import-cards" class="table-responsive">
-        <table class="table table-bordered">
-            <tr class="table-header">
-                <th>front</th>
-                <th>back</th>
-                <th>deck</th>
-            </tr>
-            <% @new_cards.each do |card| %>
-                <tr>
-                    <td>
-                        <%= simple_format(card.front) %>
-                        <%= hidden_field_tag nil, card.front, name: 'cards[][front]' %>
-                    </td>
-                    <td>
-                        <%= simple_format(card.back) %>
-                        <%= hidden_field_tag nil, card.back, name: 'cards[][back]' %>
-                    </td>
-                    <td>
-                        <%= card.deck_name %>
-                        <%= hidden_field_tag nil, card.deck_name, name: 'cards[][deck_name]' %>
-                    </td>
-                </tr>
-            <% end %>
-        </table>
+            <div id="import-cards" class="table-responsive">
+                <table class="table table-bordered">
+                    <tr class="table-header">
+                        <th>front</th>
+                        <th>back</th>
+                        <th>deck</th>
+                    </tr>
+                    <% @new_cards.each do |card| %>
+                        <tr>
+                            <td>
+                                <%= simple_format(card.front) %>
+                                <%= hidden_field_tag nil, card.front, name: 'cards[][front]' %>
+                            </td>
+                            <td>
+                                <%= simple_format(card.back) %>
+                                <%= hidden_field_tag nil, card.back, name: 'cards[][back]' %>
+                            </td>
+                            <td>
+                                <%= card.deck_name %>
+                                <%= hidden_field_tag nil, card.deck_name, name: 'cards[][deck_name]' %>
+                            </td>
+                        </tr>
+                    <% end %>
+                </table>
+            </div>
+            <%= submit_tag 'Import', class: 'btn btn-primary', data: { disable_with: 'Importing...' } %>
+        <% end %>
     </div>
-    <%= submit_tag 'Import', class: 'btn btn-primary', data: { disable_with: 'Importing...' } %>
-<% end %>
+</div>

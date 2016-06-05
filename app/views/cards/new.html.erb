@@ -1,24 +1,28 @@
-<nav>
-    <ul class="nav nav-tabs">
-        <li role="presentation" class="active">
-            <a href="#card-form" data-toggle="tab">Create</a>
-        </li>
-        <li role="presentation">
-            <a href="#card-import-form" data-toggle="tab">Import</a>
-        </li>
-    </ul>
-</nav>
-<div class="tab-content">
-    <div id="card-form" class="tab-pane fade in active">
-        <%= render 'form' %>
-    </div>
-    <div id="card-import-form" class="tab-pane fade">
-        <%= form_tag confirm_cards_path, multipart: true do %>
-            <div class="field">
-                <%= label_tag :file, 'CSV File', class: 'required-entity' %>
-                <%= file_field_tag :file %>
+<div id="new-cards">
+    <div id="new-cards-inner" class="container">
+        <nav>
+            <ul class="nav nav-tabs">
+                <li role="presentation" class="active">
+                    <a href="#card-form" data-toggle="tab">Create</a>
+                </li>
+                <li role="presentation">
+                    <a href="#card-import-form" data-toggle="tab">Import</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="tab-content">
+            <div id="card-form" class="tab-pane fade in active">
+                <%= render 'form' %>
             </div>
-            <%= submit_tag :import, class: 'btn btn-primary', data: { disable_with: 'Loading...' } %>
-        <% end %>
+            <div id="card-import-form" class="tab-pane fade">
+                <%= form_tag confirm_cards_path, multipart: true do %>
+                    <div class="field">
+                        <%= label_tag :file, 'CSV File', class: 'required-entity' %>
+                        <%= file_field_tag :file %>
+                    </div>
+                    <%= submit_tag :import, class: 'btn btn-primary', data: { disable_with: 'Loading...' } %>
+                <% end %>
+            </div>
+        </div>
     </div>
 </div>

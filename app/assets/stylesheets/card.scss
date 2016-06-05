@@ -1,43 +1,84 @@
-div.container {
-    // cards#index
-    div#filter-and-sort {
-        padding: 0;
-        margin-bottom: 15px;
-        text-align: right;
-        div.dropdown-menu {
-            min-width: 70%;
-        }
-        div#filter-body {
-            padding:15px;
-            div.field {
-                margin-bottom:15px;
-                &:last-child {
-                    margin-bottom: 0;
-                }
-                .label {
-                    display: block;
-                }
-            }
-        }
-        div#filter-footer {
-            padding: 10px 15px;
-            text-align: right;
-            border-top: 1px solid #e5e5e5;
-        }
-    }
-
+// cards#index
+div#deck {
+    background: #333;
     h2 {
+        margin: 25px 0;
         a {
-            color: #333;
+            color: #fff;
         }
         span {
             font-size: 50%;
-            color: #898989;
+            color: #ccc;
         }
     }
+}
 
-    div#cards {
-        font-size: 1.2em;
+div#actions {
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    background: #eeeee3;
+    nav {
+        ul {
+            display: flex;
+            list-style-type: none;
+            li {
+                width: 50%;
+                text-align: center;
+                padding: 10px 0;
+                border-left: 1px solid #ccc;
+                a {
+                    display: block;
+                    width: 100%;
+                }
+                &:last-child {
+                    border-right: 1px solid #ccc;
+                }
+            }
+            li.active {
+                background: #fdfdfe;
+                border-bottom: 1px solid #fdfdfe;
+                font-weight: bold;
+                position: relative;
+                top: 1px;
+            }
+        }
+    }
+}
+
+div#cards {
+    font-size: 1.2em;
+    background: #fdfdfe;
+    div#cards-inner {
+        padding-top:10px;
+
+        div#filter-and-sort {
+            margin-bottom: 10px;
+            text-align: right;
+            a#d-label1 {
+                font-size: 80%;
+            }
+            div.dropdown-menu {
+                min-width: 70%;
+            }
+            div#filter-body {
+                padding:15px;
+                div.field {
+                    margin-bottom:15px;
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                    .label {
+                        display: block;
+                    }
+                }
+            }
+            div#filter-footer {
+                padding: 10px 15px;
+                text-align: right;
+                border-top: 1px solid #e5e5e5;
+            }
+        }
+
         div.card {
             border: 1px solid #ccc;
             margin-bottom: 10px;
@@ -71,37 +112,11 @@ div.container {
             div.back {
                 background: #eee;
                 font-family: 'Inconsolata';
-                padding: 15px 15px 5px 15px;
+                padding: 15px;
                 transform: rotateY(180deg);
                 display:none;
-                div.content {
-                    margin-bottom: 15px;
-                }
-                div.card-info {
-                    padding-top: 5px;
-                    font-size: 80%;
-                    border-top: 1px solid #cccccc;
-                    ul {
-                        padding: 0;
-                        list-style-type: none;
-                        display: flex;
-                        li {
-                            width: 100%;
-                            text-align: center;
-                            i {
-                                color: #aab8c2;
-                            }
-                        }
-                        li.fav {
-                            i {
-                                cursor: pointer;
-                            }
-                            i.favorited {
-                                font-weight: bold;
-                                color: #FDCF04;
-                            }
-                        }
-                    }
+                ul {
+                    margin-left: 20px;
                 }
                 p,ul {
                     font-size: 80%;
@@ -130,103 +145,90 @@ div.container {
             }
         }
     }
+}
 
-    div#page-info {
-        margin-bottom: 15px;
-        text-align: right;
+div#page-info {
+    margin-bottom: 15px;
+    text-align: right;
+}
+
+div#pagination {
+    text-align: center;
+}
+
+div.confirm-message {
+    padding: 0 0 15px 0;
+}
+
+table {
+    tr.table-header {
+        background-color: #f8f8f8;
     }
+}
 
-    div#pagination {
-        text-align: center;
-    }
-
-    div.confirm-message {
-        padding: 0 0 15px 0;
-    }
-
-    table {
-        tr.table-header {
-            background-color: #f8f8f8;
-        }
-    }
-
-    // cards#show
-    div#card {
-        div.card-item {
-            display: flex;
-            padding: 15px 0;
-            border-bottom: 1px solid #cccccc;
-            &:first-child {
-                border-top: 1px solid #cccccc;
-            }
-            div.left {
-                width: 30%;
+// cards#new
+div#new-cards {
+    margin-top: 15px;
+    div#new-cards-inner {
+        nav {
+            li.active a {
+                background-color: #fbfbfb !important;
                 font-weight: bold;
             }
-            div.right {
-                width: 70%;
-                overflow: hidden;
-                word-break:break-all
-            }
         }
-        div.actions {
-            margin-top: 15px;
-        }
-    }
 
-    // cards#new
-    nav {
-        li.active a {
-            background-color: #fbfbfb !important;
-            font-weight: bold;
-        }
-    }
-    div.tab-content {
-        padding-top: 10px;
-        div#card-form, div#card-import-form {
-            div.field {
-                margin-bottom: 10px;
-                input[type="text"],textarea {
-                    width: 100%;
-                    font-family: 'Inconsolata';
-                }
-                textarea {
-                    padding: 5px 6px;
-                    border: 1px solid #aaa;
-                    border-radius: 4px;
-                }
-                textarea.front {
-                    min-height: 80px;
-                }
-                textarea.back {
-                    min-height: 150px;
-                }
-                select {
-                    appearance: none;
-                    background: #ffffff;
-                    width: 100%;
-                    padding: 5px 6px;
-                    border-radius: 2px;
-                    border: 1px solid #cccccc;
-                    font-size: 80%;
-                }
-                label.required-entity {
-                    &:after {
-                        color: red;
-                        content: " *"
+        div.tab-content {
+            padding-top: 10px;
+            div#card-form, div#card-import-form {
+                div.field {
+                    margin-bottom: 10px;
+                    input[type="text"],textarea {
+                        width: 100%;
+                        font-family: 'Inconsolata';
+                    }
+                    textarea {
+                        padding: 5px 6px;
+                        border: 1px solid #aaa;
+                        border-radius: 4px;
+                    }
+                    textarea.front {
+                        min-height: 80px;
+                    }
+                    textarea.back {
+                        min-height: 150px;
+                    }
+                    select {
+                        appearance: none;
+                        background: #ffffff;
+                        width: 100%;
+                        padding: 5px 6px;
+                        border-radius: 2px;
+                        border: 1px solid #cccccc;
+                        font-size: 80%;
+                    }
+                    label.required-entity {
+                        &:after {
+                            color: red;
+                            content: " *"
+                        }
                     }
                 }
             }
         }
     }
-    // cards#confirm
-    div#import-cards {
-        tr.table-header {
-            background: #eee;
-        }
+}
 
-        tr {
-            background: #fff;
+// cards#confirm
+div#confirm-cards {
+    div#confirm-cards-inner {
+        div#import-cards {
+            tr.table-header {
+                background: #eee;
+            }
+
+            tr {
+                background: #fff;
+            }
         }
     }
 }

@@ -2,38 +2,40 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 div#decks {
-    a.deck {
-        text-decoration: none;
-        color: #333;
-        border: 1px solid #ccc;
-        margin-bottom: 10px;
-        padding: 15px;
-        background: #fff;
-        overflow: hidden;
-        word-break:break-all;
-        display: flex;
-        div.deck-main {
-            width: 90%;
-            span.deck-name {
-                display: block;
-                font-size: 1.2em;
-                font-weight: bold;
+    div#decks-inner {
+        a.deck {
+            text-decoration: none;
+            color: #333;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            padding: 15px;
+            background: #fff;
+            overflow: hidden;
+            word-break:break-all;
+            display: flex;
+            div.deck-main {
+                width: 90%;
+                span.deck-name {
+                    display: block;
+                    font-size: 1.2em;
+                    font-weight: bold;
+                }
+                span.deck-info {
+                    display: block;
+                    font-size: 0.8em;
+                    color: #a6a6a6;
+                }
             }
-            span.deck-info {
-                display: block;
-                font-size: 0.8em;
-                color: #a6a6a6;
-            }
-        }
-        div.deck-link {
-            position: relative;
-            width: 10%;
-            text-align: center;
-            i {
-                margin-top: -0.4rem;
-                position: absolute;
-                top: 50%;
-                right: 0%;
+            div.deck-link {
+                position: relative;
+                width: 10%;
+                text-align: center;
+                i {
+                    margin-top: -0.4rem;
+                    position: absolute;
+                    top: 50%;
+                    right: 0%;
+                }
             }
         }
     }
