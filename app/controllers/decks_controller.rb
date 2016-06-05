@@ -11,7 +11,6 @@ class DecksController < ApplicationController
 
   def show
     respond_to do |format|
-      format.html
       format.json { render json: @deck }
     end
   end
@@ -21,10 +20,8 @@ class DecksController < ApplicationController
 
     respond_to do |format|
       if @deck.save
-        format.html { redirect(decks_path, 'Deck was successfully created') }
         format.json { render json: @deck }
       else
-        format.html { render action: 'new' }
         format.json { render json: @deck.errors, status: 400 }
       end
     end
@@ -35,10 +32,8 @@ class DecksController < ApplicationController
 
     respond_to do |format|
       if @deck.update(deck_params)
-        format.html { redirect(decks_path, 'Deck was successfully updated') }
         format.json { render json: @deck }
       else
-        format.html { render :edit }
         format.json { render json: @deck.errors, status: 400 }
       end
     end
@@ -47,7 +42,6 @@ class DecksController < ApplicationController
   def destroy
     @deck.destroy
     respond_to do |format|
-      format.html { redirect(decks_path, 'Deck was successfully deleted') }
       format.json { render json: nil, status: 204 }
     end
   end
