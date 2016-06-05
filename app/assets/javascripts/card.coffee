@@ -11,8 +11,7 @@ $ ->
       # Increment check_count
       return unless card.hasClass('flipped')
       card_id = card.attr('data-card')
-      check_count_span = card.find('li.check-count').children('span')
-      check_count = parseInt(check_count_span.text())
+      check_count = parseInt(card.attr('data-check-count'))
       $.ajax
         url: "/cards/#{card_id}",
         type: 'PATCH',
@@ -20,13 +19,13 @@ $ ->
         dataType: 'json',
         data: JSON.stringify({ "check_count": check_count + 1 }),
         success: ->
-          check_count_span.text(check_count + 1)
+          card.attr('data-check-count', check_count + 1)
 
 # Change fav
 $ ->
   $('li.fav').click ->
      card_i = $(@).children('i')
-     card_id = $(@).parents('div.card').attr('data-card')
+     card_id = $(@).parents('div.expanded-card').attr('data-card')
      if $(@).children('i').hasClass('favorited')
        is_fav = false
      else

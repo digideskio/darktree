@@ -26,7 +26,7 @@
     <div id="cards-inner" class="container">
         <% if params[:mode] == 'view' %>
             <% @cards.each do |card| %>
-                <div class="expanded-card">
+                <div class="expanded-card" data-card="<%= card.id %>">
                     <div class="front">
                         <%= simple_format(card.front) %>
                     </div>
