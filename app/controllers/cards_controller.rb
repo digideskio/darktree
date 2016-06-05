@@ -17,7 +17,6 @@ class CardsController < ApplicationController
 
   def show
     respond_to do |format|
-      format.html
       format.json { render json: @card }
     end
   end
