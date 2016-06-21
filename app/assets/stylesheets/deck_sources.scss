@@ -1,0 +1,59 @@
+// Place all the styles related to the deck_sources controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+div#new-decksrc {
+    margin-top: 15px;
+
+    div#new-decksrc-inner {
+        // TODO: duplicated (card.scss)
+        div.field {
+            margin-bottom: 10px;
+            input[type="text"], input[type="url"], textarea {
+                width: 100%;
+                font-family: 'Inconsolata';
+                padding: 5px 6px;
+                border: 1px solid #aaa;
+                border-radius: 4px;
+            }
+            label.required-entity {
+                &:after {
+                    color: red;
+                    content: " *"
+                }
+            }
+        }
+    }
+}
+
+div#decksrcs {
+    div#decksrcs-inner {
+        ul {
+            list-style-type: none;
+            li {
+                border: 1px solid #ccc;
+                margin-bottom: 10px;
+                div.decksrc-main {
+                    padding: 10px;
+                    overflow: hidden;
+                    word-break: break-all;
+                    border-bottom: 1px solid #ccc;
+                    div.deck-name {
+                        font-weight: bold;
+                    }
+                    div.decksrc-url {
+                        font-size: 90%;
+                    }
+                }
+                div.decksrc-footer {
+                    display: flex;
+                    div {
+                        padding: 5px 0;
+                        width: 100%;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+}

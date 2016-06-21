@@ -5,8 +5,11 @@ Rails.application.routes.draw do
     resources :cards, only: [:index]
     collection do
       get 'search'
+      post 'import'
     end
   end
+
+  resources :deck_sources, except: [:show, :new, :edit]
 
   resources :cards do
     collection do

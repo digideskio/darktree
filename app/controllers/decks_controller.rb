@@ -46,6 +46,39 @@ class DecksController < ApplicationController
     end
   end
 
+  def import
+    # nilがありうる
+    deck_src = DeckSource.find_by(id: params[:id])
+
+    # exception: URI::InvalidURIError
+    uri = URI.parse(deck_src.url)
+
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = true if uri.scheme == 'https'
+    response = http.start do
+      http.get(uri.path)
+    end
+
+    response.value unless response.is_a?(Net::HTTPSuccess)
+
+    # 200 or others
+
+    deck = Deck.where(name: deck_src.deck_name).first_or_initialize
+    CSV.parse(response.body.force_encoding('UTF-8'), headers: true, skip_blanks: true) do |row|
+      deck.cards << Card.new(deck_name: deck_src.deck_name, front: row['front'], back: row['back'])
+    end
+
+    deck.save!
+
+    redirect_to root_path, notice: { success: 'ok' }
+  rescue URI::InvalidURIError => e
+    "#{e.class}"
+  rescue Net::HTTPExceptions => e
+    "HTTP_REQUEST FAILED: #{e.class}"
+  rescue TimeoutError => e
+    "TIMEOUT: #{e.class}"
+  end
+
   def search
     decks = if params[:term].present?
               Deck.where('name LIKE ?', "#{params[:term]}%").pluck(:name)

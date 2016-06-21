@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160220055126) do
+ActiveRecord::Schema.define(version: 20160605091318) do
 
   create_table "cards", force: :cascade do |t|
     t.integer  "deck_id",                     null: false
@@ -22,6 +22,13 @@ ActiveRecord::Schema.define(version: 20160220055126) do
     t.boolean  "favorite",    default: false
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+  end
+
+  create_table "deck_sources", force: :cascade do |t|
+    t.string   "deck_name",  null: false
+    t.string   "url",        null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "decks", force: :cascade do |t|

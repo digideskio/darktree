@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
 
   def handle_400(exception)
     respond_to do |format|
+      p exception
+      p exception.param
       # TODO: format.html
       format.json { render json: { message: exception.message } }
     end

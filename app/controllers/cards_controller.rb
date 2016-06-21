@@ -30,7 +30,7 @@ class CardsController < ApplicationController
 
     respond_to do |format|
       if @card.save
-        format.html { redirect(deck_cards_path(@card.deck.id), success_msg(:create)) }
+        format.html { redirect_to(deck_cards_path(@card.deck.id), success_msg(:create)) }
         format.json { render json: @card }
       else
         format.html { render action: 'new' }
@@ -44,7 +44,7 @@ class CardsController < ApplicationController
 
     respond_to do |format|
       if @card.update(card_params)
-        format.html { redirect(deck_cards_path(@card.deck.id), success_msg(:update)) }
+        format.html { redirect_to(deck_cards_path(@card.deck.id), success_msg(:update)) }
         format.json { render json: @card }
       else
         format.html { render :edit }
