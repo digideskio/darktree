@@ -43,6 +43,9 @@ div#decksrcs {
                     }
                     div.decksrc-url {
                         font-size: 90%;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
                     }
                 }
                 div.decksrc-footer {
