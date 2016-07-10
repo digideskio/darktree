@@ -53,6 +53,7 @@ class DecksController < ApplicationController
     # exception: URI::InvalidURIError
     uri = URI.parse(deck_src.url)
 
+    # 1. fetch resource
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true if uri.scheme == 'https'
     response = http.start do
@@ -63,19 +64,27 @@ class DecksController < ApplicationController
 
     # 200 or others
 
-    deck = Deck.where(name: deck_src.deck_name).first_or_initialize
-    CSV.parse(response.body.force_encoding('UTF-8'), headers: true, skip_blanks: true) do |row|
-      deck.cards << Card.new(deck_name: deck_src.deck_name, front: row['front'], back: row['back'])
-    end
+    # 2. import
+    ActiveRecord::Base.transaction do
+      # find
+      deck = Deck.where(name: deck_src.deck_name).first_or_initialize
 
-    deck.save!
+      # remove cards
+      Card.where(deck_id: deck.id).each(&:destroy!)
+
+      # re-import
+      CSV.parse(response.body.force_encoding('UTF-8'), headers: true, skip_blanks: true) do |row|
+        deck.cards << Card.new(deck_name: deck_src.deck_name, front: row['front'], back: row['back'])
+      end
+      deck.save!
+    end
 
     redirect_to root_path, notice: { success: 'ok' }
   rescue URI::InvalidURIError => e
     "#{e.class}"
   rescue Net::HTTPExceptions => e
     "HTTP_REQUEST FAILED: #{e.class}"
-  rescue TimeoutError => e
+  rescue Timeout::Error => e
     "TIMEOUT: #{e.class}"
   end
 
