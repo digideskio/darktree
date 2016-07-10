@@ -48,17 +48,10 @@ class Card < ActiveRecord::Base
   }
 
   before_save do
-    if deck_name.present?
-      if Deck.exists?(name: deck_name)
-        # 同名のdeckが既に存在する場合 -> Deckの流用
-        self.deck = Deck.find_by(name: deck_name)
-      else
-        # 同名のdeckが存在しない場合 -> deckの新規登録の後、利用
-        self.deck = Deck.create(name: deck_name)
-      end
+    if Deck.exists?(name: deck_name)
+      self.deck = Deck.find_by(name: deck_name)
+    else
+      self.deck = Deck.create(name: deck_name)
     end
-
-    # デフォルトのデッキ
-    self.deck_id = 1 if self.deck.blank?
   end
 end
