@@ -9,7 +9,7 @@ class DeckSourcesController < ApplicationController
 
     respond_to do |format|
       if @deck_src.save
-        format.html { redirect_to(deck_sources_url, notice: { success: 'ok'}) }
+        format.html { redirect_to(deck_sources_url, notice: { success: 'Deck source was successfully created'}) }
         format.json { render json: @deck_src }
       else
         format.html { render action: 'new' }

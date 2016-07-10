@@ -1,7 +1,7 @@
-<%= render "shared/alert" %>
-<% if @decks.present? %>
-    <div id="decks">
-        <div id="decks-inner" class="container">
+<div id="decks">
+    <div id="decks-inner" class="container">
+        <%= render "shared/alert" %>
+        <% if @decks.present? %>
             <h2>All decks</h2>
             <% @decks.each do |deck| %>
                 <%= link_to deck_cards_path(deck.id), class: 'deck' do %>
@@ -18,6 +18,6 @@
                     </div>
                 <% end %>
             <% end %>
-        </div>
+        <% end %>
     </div>
-<% end %>
+</div>
