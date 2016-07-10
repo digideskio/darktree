@@ -31,12 +31,16 @@ ActiveRecord::Schema.define(version: 20160605091318) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "deck_sources", ["deck_name"], name: "index_deck_sources_on_deck_name", unique: true
+
   create_table "decks", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",           null: false
+    t.integer  "deck_source_id", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
+  add_index "decks", ["deck_source_id"], name: "index_decks_on_deck_source_id", unique: true
   add_index "decks", ["name"], name: "index_decks_on_name", unique: true
 
 end

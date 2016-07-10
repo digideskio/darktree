@@ -69,6 +69,7 @@ class DecksController < ApplicationController
     ActiveRecord::Base.transaction do
       # find
       deck = Deck.where(name: deck_src.deck_name).first_or_initialize
+      deck.deck_source_id = deck_src.id
 
       # remove cards
       Card.where(deck_id: deck.id).each(&:destroy!)
