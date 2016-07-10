@@ -18,6 +18,19 @@
                     </div>
                 <% end %>
             <% end %>
+        <% else %>
+            <div id="no-deck">
+                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                <h3>There is no deck!</h3>
+                <ol>
+                    <!-- 最初にデッキソースを登録しましょう。 -->
+                    <!-- デッキソースを登録したら、同期ボタンをクリックしましょう。デッキソースからカードが取り込まれます。 -->
+                    <!-- デッキが作られたら学習を開始しましょう。 -->
+                    <li>First, register <span class="bold">deck source</span> from <%= link_to 'here', deck_sources_path %>.</li>
+                    <li>When you registered deck source, push the sync button. Then cards will be imported from deck source.</li>
+                    <li>Now deck is created. Let's begin the learning!</li>
+                </ol>
+            </div>
         <% end %>
     </div>
 </div>

@@ -43,7 +43,7 @@
                             <div class="import">
                                 <%= form_tag import_decks_url do %>
                                     <%= hidden_field_tag :id, deck_src.id %>
-                                    <%= submit_tag :import, data: { disable_with: 'Importing...' } %>
+                                    <%= submit_tag :sync, data: { disable_with: 'Syncing...' } %>
                                 <% end %>
                             </div>
                             <div class="edit">

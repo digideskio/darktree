@@ -37,6 +37,24 @@ div#decks {
                 }
             }
         }
+        div#no-deck {
+            border: 1px solid #ccc;
+            background: #fff;
+            padding: 25px;
+            border-radius: 4px;
+            i {
+                display: block;
+                text-align: center;
+                font-size: 50px;
+                margin-bottom: 10px;
+            }
+            h3 {
+                margin-top: 0;
+                margin-bottom: 10px;
+                text-align: center;
+                font-weight: bold;
+            }
+        }
     }
 }
 
