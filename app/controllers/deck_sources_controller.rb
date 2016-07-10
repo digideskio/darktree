@@ -18,6 +18,15 @@ class DeckSourcesController < ApplicationController
     end
   end
 
+  def destroy
+    @deck_src = DeckSource.find_by(id: params[:id]) || {}
+    @deck_src.destroy
+    respond_to do |format|
+      format.html { redirect_to(deck_sources_path, notice: { success: 'DeckSource was successfully deleted'}) }
+      format.json { render json: nil, status: 204 }
+    end
+  end
+
   private
 
   def deck_src_params

@@ -10,7 +10,7 @@
             <div id="deck-menu">
                 <ul>
                     <li>
-                        <%= link_to(deck_path(@deck.id), method: :delete, data: { confirm: 'Do you really want to delete this deck?'}) do %>
+                        <%= link_to(deck_path(@deck.id), method: :delete, data: { confirm: 'Do you really want to delete this deck?' }) do %>
                             <i class="fa fa-trash"></i> Delete
                         <% end %>
                     </li>

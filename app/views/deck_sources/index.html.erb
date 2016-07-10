@@ -47,10 +47,12 @@
                                 <% end %>
                             </div>
                             <div class="edit">
-                                <button disabled>Edit</button>
+                                <i class="fa fa-pencil"></i> Edit
                             </div>
                             <div class="destroy">
-                                <button disabled>Destroy</button>
+                                <%= link_to(deck_source_path(deck_src.id), method: :delete, data: { confirm: 'Do you really want to delete this deck_source?' }) do %>
+                                    <i class="fa fa-trash"></i> Delete
+                                <% end %>
                             </div>
                         </div>
                     </li>
