@@ -1,14 +1,40 @@
 // cards#index
 div#deck {
     background: #333;
-    h2 {
-        margin: 25px 0;
-        a {
-            color: #fff;
+    div#deck-inner {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        h1 {
+            margin: 0;
+            margin-bottom: 10px;
+            a {
+                color: #fff;
+            }
+            span {
+                font-size: 50%;
+                color: #ccc;
+            }
         }
-        span {
-            font-size: 50%;
-            color: #ccc;
+        div#deck-menu {
+            background-color: #444;
+            border-radius: 3px;
+            padding: 5px;
+            ul {
+                list-style-type: none;
+                display: flex;
+                li {
+                    width: 100%;
+                    text-align: center;
+                    color: #ccc;
+                    a {
+                        color: #ccc;
+                        text-decoration: none;
+                        &:hover {
+                            color: #fff;
+                        }
+                    }
+                }
+            }
         }
     }
 }

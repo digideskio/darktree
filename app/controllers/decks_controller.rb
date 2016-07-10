@@ -42,6 +42,7 @@ class DecksController < ApplicationController
   def destroy
     @deck.destroy
     respond_to do |format|
+      format.html { redirect_to(decks_path, notice: { success: 'Deck was successfully deleted'}) }
       format.json { render json: nil, status: 204 }
     end
   end

@@ -3,10 +3,19 @@
 <div id="deck">
     <div id="deck-inner" class="container">
         <% if @deck.present? %>
-            <h2>
+            <h1>
                 <%= link_to @deck.name, deck_cards_path(@deck.id) %>
                 <span><%= @deck.cards.count %>cards</span>
-            </h2>
+            </h1>
+            <div id="deck-menu">
+                <ul>
+                    <li>
+                        <%= link_to(deck_path(@deck.id), method: :delete, data: { confirm: 'Do you really want to delete this deck?'}) do %>
+                            <i class="fa fa-trash"></i> Delete
+                        <% end %>
+                    </li>
+                </ul>
+            </div>
         <% end %>
     </div>
 </div>
