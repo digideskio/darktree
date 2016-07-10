@@ -80,7 +80,7 @@ class DecksController < ApplicationController
       deck.save!
     end
 
-    redirect_to root_path, notice: { success: 'ok' }
+    redirect_to root_path, notice: { success: 'Deck was successfully synced' }
   rescue URI::InvalidURIError => e
     "#{e.class}"
   rescue Net::HTTPExceptions => e
