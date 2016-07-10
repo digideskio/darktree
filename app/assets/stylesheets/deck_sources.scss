@@ -3,12 +3,24 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 div#new-decksrc {
-    margin-top: 15px;
+    margin: 15px 0 15px;
 
     div#new-decksrc-inner {
+        form {
+            background: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
         // TODO: duplicated (card.scss)
         div.field {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+            label {
+                margin-bottom: 2px;
+            }
             input[type="text"], input[type="url"], textarea {
                 width: 100%;
                 font-family: 'Inconsolata';
@@ -22,6 +34,15 @@ div#new-decksrc {
                     content: " *"
                 }
             }
+            input[type="submit"] {
+                font-size: 85%;
+                padding: 4px 15px;
+            }
+        }
+
+        div.button {
+            margin-top: 5px;
+            text-align: right;
         }
     }
 }

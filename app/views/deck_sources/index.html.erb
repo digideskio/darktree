@@ -19,7 +19,7 @@
                 <%= f.label :url, class: 'required-entity' %>
                 <%= f.url_field :url, required: true, placeholder: '(ex) https://raw.githubusercontent.com/mogulla3/til/master/english.csv' %>
             </div>
-            <div class="field">
+            <div class="field button">
                 <%= f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' } %>
             </div>
         <% end %>
@@ -47,10 +47,10 @@
                                 <% end %>
                             </div>
                             <div class="edit">
-                                Edit
+                                <button disabled>Edit</button>
                             </div>
                             <div class="destroy">
-                                Destroy
+                                <button disabled>Destroy</button>
                             </div>
                         </div>
                     </li>
