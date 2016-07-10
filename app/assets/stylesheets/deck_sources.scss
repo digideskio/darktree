@@ -1,0 +1,83 @@
+// Place all the styles related to the deck_sources controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+div#new-decksrc {
+    margin: 15px 0 15px;
+
+    div#new-decksrc-inner {
+        form {
+            background: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        // TODO: duplicated (card.scss)
+        div.field {
+            margin-bottom: 8px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+            label {
+                margin-bottom: 2px;
+            }
+            input[type="text"], input[type="url"], textarea {
+                width: 100%;
+                font-family: 'Inconsolata';
+                padding: 5px 6px;
+                border: 1px solid #aaa;
+                border-radius: 4px;
+            }
+            label.required-entity {
+                &:after {
+                    color: red;
+                    content: " *"
+                }
+            }
+            input[type="submit"] {
+                font-size: 85%;
+                padding: 4px 15px;
+            }
+        }
+
+        div.button {
+            margin-top: 5px;
+            text-align: right;
+        }
+    }
+}
+
+div#decksrcs {
+    div#decksrcs-inner {
+        ul {
+            list-style-type: none;
+            li {
+                border: 1px solid #ccc;
+                margin-bottom: 10px;
+                div.decksrc-main {
+                    padding: 10px;
+                    overflow: hidden;
+                    word-break: break-all;
+                    border-bottom: 1px solid #ccc;
+                    div.deck-name {
+                        font-weight: bold;
+                    }
+                    div.decksrc-url {
+                        font-size: 90%;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+                }
+                div.decksrc-footer {
+                    display: flex;
+                    div {
+                        padding: 5px 0;
+                        width: 100%;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+}

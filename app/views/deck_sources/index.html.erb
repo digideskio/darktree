@@ -1,0 +1,61 @@
+<div id="new-decksrc">
+    <div id="new-decksrc-inner" class="container">
+        <%= render "shared/alert" %>
+        <%= form_for(@deck_src) do |f| %>
+            <% if @deck_src.errors.any? %>
+                <div id="error_explanation">
+                    <ul>
+                        <% @deck_src.errors.full_messages.each do |msg| %>
+                            <li><%= msg %></li>
+                        <% end %>
+                    </ul>
+                </div>
+            <% end %>
+            <div class="field">
+                <%= f.label :deck_name, class: 'required-entity' %>
+                <%= f.text_field :deck_name, required: true, placeholder: '(ex) English' %>
+            </div>
+            <div class="field">
+                <%= f.label :url, class: 'required-entity' %>
+                <%= f.url_field :url, required: true, placeholder: '(ex) https://raw.githubusercontent.com/mogulla3/til/master/english.csv' %>
+            </div>
+            <div class="field button">
+                <%= f.submit 'Save', class: 'btn btn-primary', data: { disable_with: 'Saving...' } %>
+            </div>
+        <% end %>
+    </div>
+</div>
+<div id="decksrcs">
+    <div id="decksrcs-inner" class="container">
+        <% if @deck_srcs.present? %>
+            <ul>
+                <% @deck_srcs.each do |deck_src| %>
+                    <li>
+                        <div class="decksrc-main">
+                            <div class="deck-name">
+                                <%= deck_src.deck_name %>
+                            </div>
+                            <div class="decksrc-url">
+                                <%= link_to deck_src.url, deck_src.url %>
+                            </div>
+                        </div>
+                        <div class="decksrc-footer">
+                            <div class="import">
+                                <%= form_tag import_decks_url do %>
+                                    <%= hidden_field_tag :id, deck_src.id %>
+                                    <%= submit_tag :import, data: { disable_with: 'Importing...' } %>
+                                <% end %>
+                            </div>
+                            <div class="edit">
+                                <button disabled>Edit</button>
+                            </div>
+                            <div class="destroy">
+                                <button disabled>Destroy</button>
+                            </div>
+                        </div>
+                    </li>
+                <% end %>
+            </ul>
+        <% end %>
+    </div>
+</div>
